@@ -60,13 +60,18 @@ With these instructions, you can download and use the correct version of VCardix
 |  | Minimum Requirements | Recommended Requirements |
 | -- | :--: | :--: |
 | OS: | Windows 10 x64 | Windows 10 22H2 x64|
-| RAM: | 75 MB Free RAM | 100 MB Free RAM |
+| RAM: | 50 MB Free RAM | 150 MB Free RAM |
 | .NET: | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
 
 # Shortcut Key Layouts
 
 | Main Features | Key |
 | -- | :--: |
+| **Import File** | CTRL + N |
+| **Export File** | CTRL + S |
+| **VCard Version:** 2.1 | CTRL + 2 |
+| **VCard Version:** 3.0 | CTRL + 3 |
+| **VCard Version:** 4.0 | CTRL + 4 |
 | **Theme:** Light | F1 |
 | **Theme:** Dark | F2 |
 | **Start:** Windowed | F3 |
