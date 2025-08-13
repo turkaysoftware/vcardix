@@ -81,6 +81,10 @@
             this.vcard21ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vcard30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vcard40ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortingModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortingFullNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortingFirstNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortingLastNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lightThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -709,6 +713,7 @@
             this.HeaderMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.vCardVersionToolStripMenuItem,
+            this.sortingModeToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.tSWizardToolStripMenuItem,
             this.bmacToolStripMenuItem,
@@ -779,6 +784,38 @@
             this.vcard40ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.vcard40ToolStripMenuItem.Text = "vcard4.0";
             this.vcard40ToolStripMenuItem.Click += new System.EventHandler(this.Vcard40ToolStripMenuItem_Click);
+            // 
+            // sortingModeToolStripMenuItem
+            // 
+            this.sortingModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sortingFullNameToolStripMenuItem,
+            this.sortingFirstNameToolStripMenuItem,
+            this.sortingLastNameToolStripMenuItem});
+            this.sortingModeToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.sortingModeToolStripMenuItem.Name = "sortingModeToolStripMenuItem";
+            this.sortingModeToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
+            this.sortingModeToolStripMenuItem.Text = "SortingMode";
+            // 
+            // sortingFullNameToolStripMenuItem
+            // 
+            this.sortingFullNameToolStripMenuItem.Name = "sortingFullNameToolStripMenuItem";
+            this.sortingFullNameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sortingFullNameToolStripMenuItem.Text = "SortingFullName";
+            this.sortingFullNameToolStripMenuItem.Click += new System.EventHandler(this.SortingFullNameToolStripMenuItem_Click);
+            // 
+            // sortingFirstNameToolStripMenuItem
+            // 
+            this.sortingFirstNameToolStripMenuItem.Name = "sortingFirstNameToolStripMenuItem";
+            this.sortingFirstNameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sortingFirstNameToolStripMenuItem.Text = "SortingFirstName";
+            this.sortingFirstNameToolStripMenuItem.Click += new System.EventHandler(this.SortingFirstNameToolStripMenuItem_Click);
+            // 
+            // sortingLastNameToolStripMenuItem
+            // 
+            this.sortingLastNameToolStripMenuItem.Name = "sortingLastNameToolStripMenuItem";
+            this.sortingLastNameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sortingLastNameToolStripMenuItem.Text = "SortingLastName";
+            this.sortingLastNameToolStripMenuItem.Click += new System.EventHandler(this.SortingLastNameToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -1044,6 +1081,10 @@
         private System.Windows.Forms.ToolStripMenuItem cxViewImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cxRemoveImageToolStripMenuItem;
         public System.Windows.Forms.PictureBox ContactUserImage;
+        private System.Windows.Forms.ToolStripMenuItem sortingModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sortingFullNameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sortingLastNameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sortingFirstNameToolStripMenuItem;
     }
 }
 

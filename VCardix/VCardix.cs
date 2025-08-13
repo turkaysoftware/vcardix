@@ -37,6 +37,7 @@ namespace VCardix{
             ContactUserImage.SizeMode = PictureBoxSizeMode.Zoom;
             //
             vcard30ToolStripMenuItem.Checked = true;
+            sortingFullNameToolStripMenuItem.Checked = true;
             ContactList.DisplayMember = "FullName";
         }
         // GLOBAL VARIABLES
@@ -45,7 +46,8 @@ namespace VCardix{
         public static int theme;
         // LOCAL VARIABLES
         // ======================================================================================================
-        int startup_status, i_upload_size = 7;
+        private int startup_status;
+        private readonly int i_upload_size = 7;
         bool save_status = true;
         readonly string ts_wizard_name = "TS Wizard";
         // ======================================================================================================
@@ -399,6 +401,45 @@ namespace VCardix{
             vcard40ToolStripMenuItem.Checked = false;
             selectedItem.Checked = true;
         }
+        // SORTING MODE CHANGER
+        // ====================================================================================================== 
+        private void SortingFullNameToolStripMenuItem_Click(object sender, EventArgs e){
+            UpdateSortringMenuChecks(sortingFullNameToolStripMenuItem);
+            RefreshContactList("FullName", c => c.FullName);
+        }
+        private void SortingFirstNameToolStripMenuItem_Click(object sender, EventArgs e){
+            UpdateSortringMenuChecks(sortingFirstNameToolStripMenuItem);
+            RefreshContactList("FirstName", c => c.FirstName);
+        }
+        private void SortingLastNameToolStripMenuItem_Click(object sender, EventArgs e){
+            UpdateSortringMenuChecks(sortingLastNameToolStripMenuItem);
+            RefreshContactList("LastName", c => c.LastName);
+        } 
+        private void RefreshContactList(string displayMember, Func<PrefixModule, string> orderBySelector){
+            var selectedContact = ContactList.SelectedItem as PrefixModule;
+            Guid? selectedId = selectedContact?.Id;
+            //
+            ContactList.DisplayMember = displayMember;
+            ContactList.Items.Clear();
+            //
+            foreach (var c in VCardManager.ContactsList.OrderBy(c => TSNaturalSortKey(orderBySelector(c), CultureInfo.CurrentCulture))){
+                ContactList.Items.Add(c);
+            }
+            if (selectedId.HasValue){
+                for (int i = 0; i < ContactList.Items.Count; i++){
+                    if (((PrefixModule)ContactList.Items[i]).Id == selectedId.Value){
+                        ContactList.SelectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        }
+        private void UpdateSortringMenuChecks(ToolStripMenuItem selectedItem){
+            sortingFullNameToolStripMenuItem.Checked = false;
+            sortingFirstNameToolStripMenuItem.Checked = false;
+            sortingLastNameToolStripMenuItem.Checked = false;
+            selectedItem.Checked = true;
+        }
         // IMPORT FILE & DRAG AND DROP
         // ====================================================================================================== 
         private void VCardix_DragEnter(object sender, DragEventArgs e){
@@ -569,6 +610,8 @@ namespace VCardix{
                     TSImageRenderer(exportFileToolStripMenuItem, Properties.Resources.tm_export_light, 0, ContentAlignment.MiddleRight);
                     // VCARD VERSION
                     TSImageRenderer(vCardVersionToolStripMenuItem, Properties.Resources.tm_vcard_light, 0, ContentAlignment.MiddleRight);
+                    // SORTING MODE
+                    TSImageRenderer(sortingModeToolStripMenuItem, Properties.Resources.tm_sorting_mode_light, 0, ContentAlignment.MiddleRight);
                     // SETTINGS
                     TSImageRenderer(settingsToolStripMenuItem, Properties.Resources.tm_settings_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(themeToolStripMenuItem, Properties.Resources.tm_theme_light, 0, ContentAlignment.MiddleRight);
@@ -584,6 +627,10 @@ namespace VCardix{
                     TSImageRenderer(BtnDelete, Properties.Resources.ct_delete_light, 16, ContentAlignment.MiddleLeft);
                     //
                     TSImageRenderer(BtnOpenAdressWindow, Properties.Resources.ct_adress_window_light, 10, ContentAlignment.MiddleCenter);
+                    // PHOTO MODE
+                    TSImageRenderer(cxImageSelectToolStripMenuItem, Properties.Resources.ct_select_image_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(cxViewImageToolStripMenuItem, Properties.Resources.ct_show_image_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(cxRemoveImageToolStripMenuItem, Properties.Resources.ct_delete_image_light, 0, ContentAlignment.MiddleRight);
                     //
                     TSImageRenderer(BottomImage, Properties.Resources.ct_confirm_dark, 0, ContentAlignment.MiddleCenter);
                 }else if (theme == 0){
@@ -593,6 +640,8 @@ namespace VCardix{
                     TSImageRenderer(exportFileToolStripMenuItem, Properties.Resources.tm_export_dark, 0, ContentAlignment.MiddleRight);
                     // VCARD VERSION
                     TSImageRenderer(vCardVersionToolStripMenuItem, Properties.Resources.tm_vcard_dark, 0, ContentAlignment.MiddleRight);
+                    // SORTING MODE
+                    TSImageRenderer(sortingModeToolStripMenuItem, Properties.Resources.tm_sorting_mode_dark, 0, ContentAlignment.MiddleRight);
                     // SETTINGS
                     TSImageRenderer(settingsToolStripMenuItem, Properties.Resources.tm_settings_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(themeToolStripMenuItem, Properties.Resources.tm_theme_dark, 0, ContentAlignment.MiddleRight);
@@ -608,6 +657,10 @@ namespace VCardix{
                     TSImageRenderer(BtnDelete, Properties.Resources.ct_delete_dark, 16, ContentAlignment.MiddleLeft);
                     //
                     TSImageRenderer(BtnOpenAdressWindow, Properties.Resources.ct_adress_window_dark, 10, ContentAlignment.MiddleCenter);
+                    // PHOTO MODE
+                    TSImageRenderer(cxImageSelectToolStripMenuItem, Properties.Resources.ct_select_image_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(cxViewImageToolStripMenuItem, Properties.Resources.ct_show_image_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(cxRemoveImageToolStripMenuItem, Properties.Resources.ct_delete_image_dark, 0, ContentAlignment.MiddleRight);
                     //
                     TSImageRenderer(BottomImage, Properties.Resources.ct_confirm_light, 0, ContentAlignment.MiddleCenter);
                 }
@@ -640,6 +693,15 @@ namespace VCardix{
                 vcard30ToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
                 vcard40ToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
                 vcard40ToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                // SORTING MODE
+                sortingModeToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                sortingModeToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                sortingFullNameToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                sortingFullNameToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                sortingFirstNameToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                sortingFirstNameToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                sortingLastNameToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                sortingLastNameToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
                 // SETTINGS
                 settingsToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
                 settingsToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
@@ -802,6 +864,11 @@ namespace VCardix{
                 vcard21ToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderVCardVersion", "header_vcard_21");
                 vcard30ToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderVCardVersion", "header_vcard_30");
                 vcard40ToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderVCardVersion", "header_vcard_40");
+                // SORTING MODE
+                sortingModeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_sorting");
+                sortingFullNameToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderSortingMode", "header_sm_full");
+                sortingFirstNameToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderSortingMode", "header_sm_firstname");
+                sortingLastNameToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderSortingMode", "header_sm_lastname");
                 // SETTINGS
                 settingsToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_settings");
                 // THEMES

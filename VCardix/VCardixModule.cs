@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -88,13 +90,61 @@ namespace VCardix{
         // DELETE DATA
         // ======================================================================================================
         public bool DeleteContact(Guid id){ return contactsById.Remove(id); }
+        // DECODE QUOTED PRINTABLE
+        // ======================================================================================================
+        public static string DecodeQuotedPrintable(string input){
+            if (string.IsNullOrEmpty(input))
+                return input;
+
+            // Merge lines that continue with "=" at the end of the line
+            input = Regex.Replace(input, @"=\r?\n", "");
+            // Remove the single "=" sign remaining at the end of the text
+            if (input.EndsWith("="))
+                input = input.Substring(0, input.Length - 1);
+
+            var bytes = new List<byte>();
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] == '=' && i + 2 < input.Length)
+                {
+                    string hex = input.Substring(i + 1, 2);
+                    if (byte.TryParse(hex, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out byte b))
+                    {
+                        bytes.Add(b);
+                        i += 2;
+                    }
+                    else
+                    {
+                        // Geçersiz hex, direkt '=' karakteri olarak ekle
+                        bytes.Add((byte)input[i]);
+                    }
+                }
+                else
+                {
+                    bytes.Add((byte)input[i]);
+                }
+            }
+            return Encoding.UTF8.GetString(bytes.ToArray());
+        }
         // VCARD LOAD/SAVE
         // ======================================================================================================
         public void LoadVcf(string filePath)
         {
             contactsById.Clear();
             //
-            var lines = File.ReadAllLines(filePath, Encoding.UTF8);
+            var rawLines = File.ReadAllLines(filePath, Encoding.UTF8);
+            var lines = new List<string>();
+            for (int i = 0; i < rawLines.Length; i++)
+            {
+                string line = rawLines[i];
+                while (line.EndsWith("=") && i + 1 < rawLines.Length)
+                {
+                    line = line.Substring(0, line.Length - 1) + rawLines[i + 1];
+                    i++;
+                }
+                lines.Add(line);
+            }
+            //
             var vcardBlocks = new List<List<string>>();
             List<string> currentBlock = null;
             //
@@ -116,6 +166,8 @@ namespace VCardix{
             {
                 var current = new PrefixModule();
                 string currentVersion = null;
+                bool splitFn = true;
+
 
                 foreach (var line in block)
                 {
@@ -131,12 +183,51 @@ namespace VCardix{
                         else
                             current.Id = Guid.NewGuid();
                     }
-                    else if (line.StartsWith("N:"))
+                    else if (line.StartsWith("N:") || line.StartsWith("N;"))
                     {
-                        var parts = line.Substring(2).Split(';');
+                        string lineContent = line.Substring(line.IndexOf(':') + 1);
+
+                        if (line.IndexOf("ENCODING=QUOTED-PRINTABLE", StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            lineContent = DecodeQuotedPrintable(lineContent);
+                        }
+                        var parts = lineContent.Split(';');
                         current.LastName = parts.Length > 0 ? parts[0] : "";
                         current.FirstName = parts.Length > 1 ? parts[1] : "";
                         current.MiddleName = parts.Length > 2 ? parts[2] : "";
+                    }
+
+                 
+
+                    else if (line.StartsWith("FN:") || line.StartsWith("FN;"))
+                    {
+                        string fnContent = line.Substring(line.IndexOf(':') + 1);
+                        if (line.IndexOf("ENCODING=QUOTED-PRINTABLE", StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            fnContent = DecodeQuotedPrintable(fnContent);
+                        }
+
+                        if (splitFn)
+                        {
+                            var parts = fnContent.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                            if (parts.Length > 0) current.FirstName = parts[0];
+                            if (parts.Length > 2)
+                            {
+                                current.MiddleName = string.Join(" ", parts, 1, parts.Length - 2);
+                                current.LastName = parts[parts.Length - 1];
+                            }
+                            else if (parts.Length == 2)
+                            {
+                                current.LastName = parts[1];
+                            }
+                        }
+                        else
+                        {
+                            // Bölme yapma, komple tek kutuya at
+                            current.FirstName = fnContent;
+                            current.MiddleName = "";
+                            current.LastName = "";
+                        }
                     }
                     else if ((line.StartsWith("TEL;CELL:") || line.StartsWith("TEL;TYPE=CELL:")))
                     {

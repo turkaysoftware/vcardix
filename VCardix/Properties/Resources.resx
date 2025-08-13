@@ -145,6 +145,12 @@
   <data name="ct_delete_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\vcardix_images\vcardix_ui\theme_dark\ct_delete_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ct_delete_image_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_dark\ct_delete_image_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_delete_image_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_light\ct_delete_image_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ct_delete_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\vcardix_images\vcardix_ui\theme_light\ct_delete_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -159,6 +165,18 @@
   </data>
   <data name="ct_instagram_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\vcardix_images\vcardix_ui\theme_light\ct_instagram_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_select_image_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_dark\ct_select_image_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_select_image_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_light\ct_select_image_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_show_image_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_dark\ct_show_image_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_show_image_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_light\ct_show_image_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ct_update_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\vcardix_images\vcardix_ui\theme_dark\ct_update_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -225,6 +243,12 @@
   </data>
   <data name="tm_settings_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\vcardix_images\vcardix_ui\theme_light\tm_settings_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tm_sorting_mode_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_dark\tm_sorting_mode_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tm_sorting_mode_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_light\tm_sorting_mode_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_startup_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\vcardix_images\vcardix_ui\theme_dark\tm_startup_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

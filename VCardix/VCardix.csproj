@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>25.08.0.%2a</ApplicationVersion>
+    <ApplicationVersion>25.09.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -194,6 +194,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="VCardixLogo.ico" />
+    <None Include="vcardix_images\vcardix_ui\theme_dark\ct_show_image_dark.png" />
+    <None Include="vcardix_images\vcardix_ui\theme_dark\ct_select_image_dark.png" />
+    <None Include="vcardix_images\vcardix_ui\theme_dark\ct_delete_image_dark.png" />
+    <None Include="vcardix_images\vcardix_ui\theme_light\ct_show_image_light.png" />
+    <None Include="vcardix_images\vcardix_ui\theme_light\ct_select_image_light.png" />
+    <None Include="vcardix_images\vcardix_ui\theme_light\ct_delete_image_light.png" />
+    <None Include="vcardix_images\vcardix_ui\theme_light\tm_sorting_mode_light.png" />
+    <None Include="vcardix_images\vcardix_ui\theme_dark\tm_sorting_mode_dark.png" />
     <None Include="vcardix_images\vcardix_ui\theme_dark\ct_cancel_dark.png" />
     <None Include="vcardix_images\vcardix_ui\theme_light\ct_cancel_light.png" />
     <None Include="vcardix_images\vcardix_ui\theme_dark\ct_adress_window_dark.png" />

@@ -153,6 +153,26 @@ namespace VCardix.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap ct_delete_image_dark {
+            get {
+                object obj = ResourceManager.GetObject("ct_delete_image_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap ct_delete_image_light {
+            get {
+                object obj = ResourceManager.GetObject("ct_delete_image_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap ct_delete_light {
             get {
                 object obj = ResourceManager.GetObject("ct_delete_light", resourceCulture);
@@ -196,6 +216,46 @@ namespace VCardix.Properties {
         internal static System.Drawing.Bitmap ct_instagram_light {
             get {
                 object obj = ResourceManager.GetObject("ct_instagram_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap ct_select_image_dark {
+            get {
+                object obj = ResourceManager.GetObject("ct_select_image_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap ct_select_image_light {
+            get {
+                object obj = ResourceManager.GetObject("ct_select_image_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap ct_show_image_dark {
+            get {
+                object obj = ResourceManager.GetObject("ct_show_image_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap ct_show_image_light {
+            get {
+                object obj = ResourceManager.GetObject("ct_show_image_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -416,6 +476,26 @@ namespace VCardix.Properties {
         internal static System.Drawing.Bitmap tm_settings_light {
             get {
                 object obj = ResourceManager.GetObject("tm_settings_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_sorting_mode_dark {
+            get {
+                object obj = ResourceManager.GetObject("tm_sorting_mode_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_sorting_mode_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_sorting_mode_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
