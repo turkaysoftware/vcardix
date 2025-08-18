@@ -71,16 +71,17 @@ With these instructions, you can download and use the correct version of VCardix
 | **VCard Version:** 2.1 | CTRL + 2 |
 | **VCard Version:** 3.0 | CTRL + 3 |
 | **VCard Version:** 4.0 | CTRL + 4 |
+| **Sorting Mode:** Full Name | CTRL + Shift + 1 |
+| **Sorting Mode:** First Name | CTRL + Shift + 2 |
+| **Sorting Mode:** Last Name | CTRL + Shift + 3 |
+| **Sorting Mode:** Mobile Phone | CTRL + Shift + 4 |
 | **Theme:** Light | F1 |
 | **Theme:** Dark | F2 |
 | **Start:** Windowed | F3 |
 | **Start:** Full Screen | F4 |
-| **Hiding Mode:** On | F5 |
-| **Hiding Mode:** Off | F6 |
 
 | Extras | Key |
 | -- | :--: |
 | **Check Update** | F11 |
 | **About** | F12 |
 | **TS Wizard** | CTRL + Shift + S |
-| **Buy Me a Coffee** | CTRL + Shift + D |
