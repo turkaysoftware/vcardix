@@ -7,7 +7,7 @@
 
 <img width="150" height="150" alt="Buy Me a Coffee - turkaysoftware" src="https://github.com/user-attachments/assets/9987c7dc-f8dd-42ab-a7f9-d8a4fca2e3d5" />
 
-**VCardix** is a **vCard and CSV Contact Editing Software** developed by **Eray Türkay**. Thanks to its modern algorithm, it is one of the **best in its class**. Programmed exclusively in **C# and .NET Framework**. And it is **completely free**!
+**VCardix** is a **vCard, CSV and JSON Contact Editing Software** developed by **Eray Türkay**. Thanks to its modern algorithm, it is one of the **best in its class**. Programmed exclusively in **C# and .NET Framework**. And it is **completely free**!
 
 [Click here](https://www.turkaysoftware.com/vcardix) for full specifications.
 
