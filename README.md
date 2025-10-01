@@ -11,9 +11,9 @@
 
 [Click here](https://www.turkaysoftware.com/vcardix) for full specifications.
 
-<img width="1010" height="633" alt="VCardix UI - Dark" src="https://github.com/user-attachments/assets/78db4d1a-3350-4751-9f4d-002458de4e45" />
+<img width="1010" height="633" alt="VCardix UI - Dark" src="https://github.com/user-attachments/assets/9f195bea-7fbd-4410-b5e4-0c8d4fac103c" />
 
-<img width="1010" height="633" alt="VCardix UI - Light" src="https://github.com/user-attachments/assets/1a3b980c-3c73-48e9-ab67-db28306ed211" />
+<img width="1010" height="633" alt="VCardix UI - Light" src="https://github.com/user-attachments/assets/e59d293c-5a7d-46ed-8580-43f464f844c4" />
 
 # Download VCardix
 
@@ -77,8 +77,9 @@ With these instructions, you can download and use the correct version of VCardix
 | **Sorting Mode:** Mobile Phone | CTRL + Shift + 4 |
 | **Theme:** Light | F1 |
 | **Theme:** Dark | F2 |
-| **Start:** Windowed | F3 |
-| **Start:** Full Screen | F4 |
+| **Theme:** System | F3 |
+| **Start:** Windowed | F4 |
+| **Start:** Full Screen | F5 |
 
 | Extras | Key |
 | -- | :--: |
