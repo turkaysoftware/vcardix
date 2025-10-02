@@ -95,7 +95,7 @@
             // 
             this.BtnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
             this.BtnSave.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
-            this.BtnSave.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.BtnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
             this.BtnSave.BorderRadius = 10;
             this.BtnSave.BorderSize = 0;
             this.BtnSave.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -121,7 +121,7 @@
             // 
             this.BtnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
             this.BtnCancel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
-            this.BtnCancel.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.BtnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
             this.BtnCancel.BorderRadius = 10;
             this.BtnCancel.BorderSize = 0;
             this.BtnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -329,9 +329,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(650, 340);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(650, 340);
             this.Name = "VCardixAdressWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VCardixAdressWindow";

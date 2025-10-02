@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
-using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 //
 using static VCardix.TSModules;
@@ -10,10 +11,21 @@ namespace VCardix{
     public partial class VCardixAbout : Form{
         public VCardixAbout(){
             InitializeComponent();
+            //
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, AboutTable, new object[] { true });
             //
             PanelHeader.Parent = ImageAbout;
             CloseAboutBtn.Parent = PanelHeader;
+            AboutTable.RowTemplate.Height = (int)(24 * this.DeviceDpi / 96f);
+            AboutTable.Columns.Add("LangName", "Language");
+            AboutTable.Columns.Add("LangTranslator", "Translator");
+            AboutTable.Columns[0].Width = (int)(110 * this.DeviceDpi / 96f);
+            AboutTable.AllowUserToResizeColumns = false;
+            foreach (DataGridViewColumn columnPadding in AboutTable.Columns){
+                int scaledPadding = (int)(3 * this.DeviceDpi / 96f);
+                columnPadding.DefaultCellStyle.Padding = new Padding(scaledPadding, 0, 0, 0);
+            }
+            foreach (DataGridViewColumn A_Column in AboutTable.Columns) { A_Column.SortMode = DataGridViewColumnSortMode.NotSortable; }
             //
             TSImageRenderer(CloseAboutBtn, Properties.Resources.ts_close, 20);
         }
@@ -23,36 +35,33 @@ namespace VCardix{
         private Point formDraggingStartPoint = new Point(0, 0);
         // ABOUT LOAD
         // ======================================================================================================
-        private void VCardixAbout_Load(object sender, EventArgs e){
+        private async void VCardixAbout_Load(object sender, EventArgs e){
             try{
                 LabelDeveloper.Text = Application.CompanyName;
                 LabelSoftware.Text = Application.ProductName;
                 LabelVersion.Text = TS_VersionEngine.TS_SofwareVersion(1, Program.ts_version_mode);
                 LabelCopyright.Text = TS_SoftwareCopyrightDate.ts_scd_preloader;
-                //
-                AboutTable.Columns.Add("x", "x");
-                AboutTable.Columns.Add("x", "x");
-                AboutTable.Columns[0].Width = 110;
-                foreach (var available_lang_file in AvailableLanguages){
-                    TSSettingsSave software_read_settings = new TSSettingsSave(available_lang_file);
-                    string[] get_name = software_read_settings.TSReadSettings("Main", "lang_name").Split('/');
-                    string get_lang_translator = software_read_settings.TSReadSettings("Main", "translator");
-                    AboutTable.Rows.Add(get_name[0].Trim(), get_lang_translator.Trim());
-                }
-                AboutTable.AllowUserToResizeColumns = false;
-                foreach (DataGridViewColumn A_Column in AboutTable.Columns) { A_Column.SortMode = DataGridViewColumnSortMode.NotSortable; }
-                AboutTable.ClearSelection();
                 // GET PRELOAD SETTINGS
                 About_preloader();
+                //
+                await Task.Run(() => LoadLanguageConverterName());
             }catch (Exception){ }
+        }
+        private void LoadLanguageConverterName(){
+            foreach (var available_lang_file in AvailableLanguages){
+                TSSettingsSave software_read_settings = new TSSettingsSave(available_lang_file);
+                string[] get_name = software_read_settings.TSReadSettings("Main", "lang_name").Split('/');
+                string get_lang_translator = software_read_settings.TSReadSettings("Main", "translator");
+                AboutTable.BeginInvoke((Action)(() => {
+                    AboutTable.Rows.Add(get_name[0].Trim(), get_lang_translator.Trim());
+                }));
+            }
+            AboutTable.BeginInvoke((Action)(() => AboutTable.ClearSelection()));
         }
         // DYNAMIC UI
         // ======================================================================================================
         public void About_preloader(){
             try{
-                // COLOR SETTINGS
-                TSSetWindowTheme(Handle, VCardixMain.theme);
-                //
                 BackColor = TS_ThemeEngine.ColorMode(VCardixMain.theme, "TSBT_BGColor2");
                 PanelTxt.BackColor = TS_ThemeEngine.ColorMode(VCardixMain.theme, "TSBT_BGColor2");
                 //
@@ -116,14 +125,14 @@ namespace VCardix{
         // ======================================================================================================
         private void About_GitHubBtn_Click(object sender, EventArgs e){
             try{
-                Process.Start(new ProcessStartInfo(TS_LinkSystem.github_link) { UseShellExecute = true });
+                Process.Start(new ProcessStartInfo(TS_LinkSystem.github_link){ UseShellExecute = true });
             }catch (Exception){ }
         }
         // BUY ME A COFFEE LINK
         // ======================================================================================================
         private void About_BmacBtn_Click(object sender, EventArgs e){
             try{
-                Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_bmac) { UseShellExecute = true });
+                Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_bmac){ UseShellExecute = true });
             }catch (Exception){ }
         }
         // FORM DRAGGING SYSTEM
@@ -144,7 +153,5 @@ namespace VCardix{
         // CLOSE ABOUT
         // ======================================================================================================
         private void CloseAboutBtn_Click(object sender, EventArgs e){ Close(); }
-
-    
     }
 }

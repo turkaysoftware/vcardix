@@ -23,10 +23,6 @@ namespace VCardix{
         // ======================================================================================================
         public void Image_preview_preloader(){
             try{
-                // COLOR SETTINGS
-                //
-                TSSetWindowTheme(Handle, VCardixMain.theme);
-                //
                 BackColor = TS_ThemeEngine.ColorMode(VCardixMain.theme, "TSBT_BGColor2");
                 //
                 foreach (Control ui_controls in BackPanel.Controls){

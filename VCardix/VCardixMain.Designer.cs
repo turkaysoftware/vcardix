@@ -31,8 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VCardixMain));
             this.BackPanel = new System.Windows.Forms.Panel();
+            this.BtnAdd = new VCardix.TSCustomButton();
+            this.BtnDelete = new VCardix.TSCustomButton();
+            this.BtnUpdate = new VCardix.TSCustomButton();
             this.ContactList = new System.Windows.Forms.ListBox();
             this.UIPanel = new System.Windows.Forms.Panel();
+            this.BtnOpenAdressWindow = new VCardix.TSCustomButton();
+            this.dateTimePickerBirthday = new VCardix.TSCustomDateTimePicker();
             this.ContactUserImage = new System.Windows.Forms.PictureBox();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.lblMiddleName = new System.Windows.Forms.Label();
@@ -93,6 +98,7 @@
             this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lightThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.systemThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,11 +114,6 @@
             this.cxViewImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cxSaveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cxRemoveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BtnAdd = new VCardix.TSCustomButton();
-            this.BtnDelete = new VCardix.TSCustomButton();
-            this.BtnUpdate = new VCardix.TSCustomButton();
-            this.BtnOpenAdressWindow = new VCardix.TSCustomButton();
-            this.dateTimePickerBirthday = new VCardix.TSCustomDateTimePicker();
             this.BackPanel.SuspendLayout();
             this.UIPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ContactUserImage)).BeginInit();
@@ -148,16 +149,86 @@
             this.BackPanel.Size = new System.Drawing.Size(1008, 577);
             this.BackPanel.TabIndex = 1;
             // 
+            // BtnAdd
+            // 
+            this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnAdd.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnAdd.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnAdd.BorderRadius = 10;
+            this.BtnAdd.BorderSize = 0;
+            this.BtnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnAdd.FlatAppearance.BorderSize = 0;
+            this.BtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnAdd.ForeColor = System.Drawing.Color.White;
+            this.BtnAdd.Location = new System.Drawing.Point(10, 407);
+            this.BtnAdd.Name = "BtnAdd";
+            this.BtnAdd.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.BtnAdd.Size = new System.Drawing.Size(255, 35);
+            this.BtnAdd.TabIndex = 3;
+            this.BtnAdd.Text = "Add";
+            this.BtnAdd.TextColor = System.Drawing.Color.White;
+            this.BtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnAdd.UseVisualStyleBackColor = false;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            // 
+            // BtnDelete
+            // 
+            this.BtnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnDelete.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnDelete.BorderRadius = 10;
+            this.BtnDelete.BorderSize = 0;
+            this.BtnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnDelete.FlatAppearance.BorderSize = 0;
+            this.BtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnDelete.ForeColor = System.Drawing.Color.White;
+            this.BtnDelete.Location = new System.Drawing.Point(10, 489);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.BtnDelete.Size = new System.Drawing.Size(255, 35);
+            this.BtnDelete.TabIndex = 5;
+            this.BtnDelete.Text = "Delete";
+            this.BtnDelete.TextColor = System.Drawing.Color.White;
+            this.BtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnDelete.UseVisualStyleBackColor = false;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
+            // BtnUpdate
+            // 
+            this.BtnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnUpdate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnUpdate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnUpdate.BorderRadius = 10;
+            this.BtnUpdate.BorderSize = 0;
+            this.BtnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnUpdate.FlatAppearance.BorderSize = 0;
+            this.BtnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnUpdate.ForeColor = System.Drawing.Color.White;
+            this.BtnUpdate.Location = new System.Drawing.Point(10, 448);
+            this.BtnUpdate.Name = "BtnUpdate";
+            this.BtnUpdate.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.BtnUpdate.Size = new System.Drawing.Size(255, 35);
+            this.BtnUpdate.TabIndex = 4;
+            this.BtnUpdate.Text = "Update";
+            this.BtnUpdate.TextColor = System.Drawing.Color.White;
+            this.BtnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnUpdate.UseVisualStyleBackColor = false;
+            this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
+            // 
             // ContactList
             // 
             this.ContactList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ContactList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ContactList.Font = new System.Drawing.Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Bold);
             this.ContactList.FormattingEnabled = true;
+            this.ContactList.IntegralHeight = false;
             this.ContactList.ItemHeight = 17;
-            this.ContactList.Location = new System.Drawing.Point(10, 70);
+            this.ContactList.Location = new System.Drawing.Point(10, 67);
             this.ContactList.Name = "ContactList";
-            this.ContactList.Size = new System.Drawing.Size(255, 325);
+            this.ContactList.Size = new System.Drawing.Size(255, 334);
             this.ContactList.TabIndex = 2;
             this.ContactList.SelectedIndexChanged += new System.EventHandler(this.ContactList_SelectedIndexChanged);
             // 
@@ -203,6 +274,44 @@
             this.UIPanel.Padding = new System.Windows.Forms.Padding(10);
             this.UIPanel.Size = new System.Drawing.Size(725, 511);
             this.UIPanel.TabIndex = 6;
+            // 
+            // BtnOpenAdressWindow
+            // 
+            this.BtnOpenAdressWindow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnOpenAdressWindow.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnOpenAdressWindow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
+            this.BtnOpenAdressWindow.BorderRadius = 5;
+            this.BtnOpenAdressWindow.BorderSize = 0;
+            this.BtnOpenAdressWindow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnOpenAdressWindow.FlatAppearance.BorderSize = 0;
+            this.BtnOpenAdressWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnOpenAdressWindow.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnOpenAdressWindow.ForeColor = System.Drawing.Color.White;
+            this.BtnOpenAdressWindow.Location = new System.Drawing.Point(210, 321);
+            this.BtnOpenAdressWindow.Name = "BtnOpenAdressWindow";
+            this.BtnOpenAdressWindow.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.BtnOpenAdressWindow.Size = new System.Drawing.Size(28, 28);
+            this.BtnOpenAdressWindow.TabIndex = 35;
+            this.BtnOpenAdressWindow.TextColor = System.Drawing.Color.White;
+            this.BtnOpenAdressWindow.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnOpenAdressWindow.UseVisualStyleBackColor = false;
+            this.BtnOpenAdressWindow.Click += new System.EventHandler(this.BtnOpenAdressWindow_Click);
+            // 
+            // dateTimePickerBirthday
+            // 
+            this.dateTimePickerBirthday.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.dateTimePickerBirthday.ButtonColor = System.Drawing.SystemColors.ControlDark;
+            this.dateTimePickerBirthday.CalendarForeColor = System.Drawing.SystemColors.WindowText;
+            this.dateTimePickerBirthday.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePickerBirthday.DisabledBackColor = System.Drawing.SystemColors.Control;
+            this.dateTimePickerBirthday.DisabledButtonColor = System.Drawing.SystemColors.ControlDark;
+            this.dateTimePickerBirthday.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.dateTimePickerBirthday.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
+            this.dateTimePickerBirthday.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dateTimePickerBirthday.Location = new System.Drawing.Point(212, 106);
+            this.dateTimePickerBirthday.Name = "dateTimePickerBirthday";
+            this.dateTimePickerBirthday.Size = new System.Drawing.Size(300, 25);
+            this.dateTimePickerBirthday.TabIndex = 7;
             // 
             // ContactUserImage
             // 
@@ -651,7 +760,7 @@
             // 
             // MFLP3
             // 
-            this.MFLP3.BackColor = System.Drawing.Color.White;
+            this.MFLP3.BackColor = System.Drawing.Color.BurlyWood;
             this.MFLP3.Controls.Add(this.MLBmac);
             this.MFLP3.Location = new System.Drawing.Point(76, 3);
             this.MFLP3.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
@@ -701,7 +810,7 @@
             // 
             // MFLP1
             // 
-            this.MFLP1.BackColor = System.Drawing.Color.White;
+            this.MFLP1.BackColor = System.Drawing.Color.DarkKhaki;
             this.MFLP1.Controls.Add(this.MLWeb);
             this.MFLP1.Location = new System.Drawing.Point(14, 3);
             this.MFLP1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
@@ -877,7 +986,8 @@
             // 
             this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lightThemeToolStripMenuItem,
-            this.darkThemeToolStripMenuItem});
+            this.darkThemeToolStripMenuItem,
+            this.systemThemeToolStripMenuItem});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
             this.themeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.themeToolStripMenuItem.Text = "Theme";
@@ -886,7 +996,7 @@
             // 
             this.lightThemeToolStripMenuItem.Name = "lightThemeToolStripMenuItem";
             this.lightThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.lightThemeToolStripMenuItem.Text = "Light Theme";
             this.lightThemeToolStripMenuItem.Click += new System.EventHandler(this.LightThemeToolStripMenuItem_Click);
             // 
@@ -894,9 +1004,17 @@
             // 
             this.darkThemeToolStripMenuItem.Name = "darkThemeToolStripMenuItem";
             this.darkThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.darkThemeToolStripMenuItem.Text = "Dark Theme";
             this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.DarkThemeToolStripMenuItem_Click);
+            // 
+            // systemThemeToolStripMenuItem
+            // 
+            this.systemThemeToolStripMenuItem.Name = "systemThemeToolStripMenuItem";
+            this.systemThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.systemThemeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.systemThemeToolStripMenuItem.Text = "System Theme";
+            this.systemThemeToolStripMenuItem.Click += new System.EventHandler(this.SystemThemeToolStripMenuItem_Click);
             // 
             // languageToolStripMenuItem
             // 
@@ -931,7 +1049,7 @@
             // windowedToolStripMenuItem
             // 
             this.windowedToolStripMenuItem.Name = "windowedToolStripMenuItem";
-            this.windowedToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.windowedToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
             this.windowedToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.windowedToolStripMenuItem.Text = "Windowed";
             this.windowedToolStripMenuItem.Click += new System.EventHandler(this.WindowedToolStripMenuItem_Click);
@@ -939,7 +1057,7 @@
             // fullScreenToolStripMenuItem
             // 
             this.fullScreenToolStripMenuItem.Name = "fullScreenToolStripMenuItem";
-            this.fullScreenToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.fullScreenToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.fullScreenToolStripMenuItem.Text = "Full Screen";
             this.fullScreenToolStripMenuItem.Click += new System.EventHandler(this.FullScreenToolStripMenuItem_Click);
@@ -1013,113 +1131,6 @@
             this.cxRemoveImageToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.cxRemoveImageToolStripMenuItem.Text = "CxRemoveImage";
             this.cxRemoveImageToolStripMenuItem.Click += new System.EventHandler(this.CxRemoveImageToolStripMenuItem_Click);
-            // 
-            // BtnAdd
-            // 
-            this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
-            this.BtnAdd.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
-            this.BtnAdd.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.BtnAdd.BorderRadius = 10;
-            this.BtnAdd.BorderSize = 0;
-            this.BtnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnAdd.FlatAppearance.BorderSize = 0;
-            this.BtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.BtnAdd.ForeColor = System.Drawing.Color.White;
-            this.BtnAdd.Location = new System.Drawing.Point(10, 407);
-            this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.BtnAdd.Size = new System.Drawing.Size(255, 35);
-            this.BtnAdd.TabIndex = 3;
-            this.BtnAdd.Text = "Add";
-            this.BtnAdd.TextColor = System.Drawing.Color.White;
-            this.BtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnAdd.UseVisualStyleBackColor = false;
-            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
-            // 
-            // BtnDelete
-            // 
-            this.BtnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
-            this.BtnDelete.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
-            this.BtnDelete.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.BtnDelete.BorderRadius = 10;
-            this.BtnDelete.BorderSize = 0;
-            this.BtnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnDelete.FlatAppearance.BorderSize = 0;
-            this.BtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.BtnDelete.ForeColor = System.Drawing.Color.White;
-            this.BtnDelete.Location = new System.Drawing.Point(10, 489);
-            this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.BtnDelete.Size = new System.Drawing.Size(255, 35);
-            this.BtnDelete.TabIndex = 5;
-            this.BtnDelete.Text = "Delete";
-            this.BtnDelete.TextColor = System.Drawing.Color.White;
-            this.BtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnDelete.UseVisualStyleBackColor = false;
-            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
-            // 
-            // BtnUpdate
-            // 
-            this.BtnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
-            this.BtnUpdate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
-            this.BtnUpdate.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.BtnUpdate.BorderRadius = 10;
-            this.BtnUpdate.BorderSize = 0;
-            this.BtnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnUpdate.FlatAppearance.BorderSize = 0;
-            this.BtnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.BtnUpdate.ForeColor = System.Drawing.Color.White;
-            this.BtnUpdate.Location = new System.Drawing.Point(10, 448);
-            this.BtnUpdate.Name = "BtnUpdate";
-            this.BtnUpdate.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.BtnUpdate.Size = new System.Drawing.Size(255, 35);
-            this.BtnUpdate.TabIndex = 4;
-            this.BtnUpdate.Text = "Update";
-            this.BtnUpdate.TextColor = System.Drawing.Color.White;
-            this.BtnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnUpdate.UseVisualStyleBackColor = false;
-            this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
-            // 
-            // BtnOpenAdressWindow
-            // 
-            this.BtnOpenAdressWindow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
-            this.BtnOpenAdressWindow.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
-            this.BtnOpenAdressWindow.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.BtnOpenAdressWindow.BorderRadius = 5;
-            this.BtnOpenAdressWindow.BorderSize = 0;
-            this.BtnOpenAdressWindow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnOpenAdressWindow.FlatAppearance.BorderSize = 0;
-            this.BtnOpenAdressWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnOpenAdressWindow.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.BtnOpenAdressWindow.ForeColor = System.Drawing.Color.White;
-            this.BtnOpenAdressWindow.Location = new System.Drawing.Point(210, 321);
-            this.BtnOpenAdressWindow.Name = "BtnOpenAdressWindow";
-            this.BtnOpenAdressWindow.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.BtnOpenAdressWindow.Size = new System.Drawing.Size(28, 28);
-            this.BtnOpenAdressWindow.TabIndex = 35;
-            this.BtnOpenAdressWindow.TextColor = System.Drawing.Color.White;
-            this.BtnOpenAdressWindow.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnOpenAdressWindow.UseVisualStyleBackColor = false;
-            this.BtnOpenAdressWindow.Click += new System.EventHandler(this.BtnOpenAdressWindow_Click);
-            // 
-            // dateTimePickerBirthday
-            // 
-            this.dateTimePickerBirthday.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.dateTimePickerBirthday.ButtonColor = System.Drawing.SystemColors.ControlDark;
-            this.dateTimePickerBirthday.CalendarForeColor = System.Drawing.SystemColors.WindowText;
-            this.dateTimePickerBirthday.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePickerBirthday.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.dateTimePickerBirthday.DisabledButtonColor = System.Drawing.SystemColors.ControlDark;
-            this.dateTimePickerBirthday.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.dateTimePickerBirthday.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
-            this.dateTimePickerBirthday.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dateTimePickerBirthday.Location = new System.Drawing.Point(212, 106);
-            this.dateTimePickerBirthday.Name = "dateTimePickerBirthday";
-            this.dateTimePickerBirthday.Size = new System.Drawing.Size(300, 25);
-            this.dateTimePickerBirthday.TabIndex = 7;
             // 
             // VCardixMain
             // 
@@ -1250,6 +1261,7 @@
         private TSCustomButton BtnAdd;
         private TSCustomButton BtnDelete;
         public TSCustomButton BtnOpenAdressWindow;
+        private System.Windows.Forms.ToolStripMenuItem systemThemeToolStripMenuItem;
     }
 }
 

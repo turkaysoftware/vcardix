@@ -35,10 +35,6 @@ namespace VCardix{
         // ======================================================================================================
         public void Adress_window_preloader(){
             try{
-                // COLOR SETTINGS
-                //
-                TSSetWindowTheme(Handle, VCardixMain.theme);
-                //
                 BackColor = TS_ThemeEngine.ColorMode(VCardixMain.theme, "TSBT_BGColor2");
                 //
                 foreach (Control ui_controls in TLPBtn.Controls){

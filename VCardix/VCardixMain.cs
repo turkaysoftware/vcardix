@@ -7,6 +7,7 @@
 // GitHub: https://github.com/turkaysoftware/vcardix
 // ======================================================================================================
 
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -41,6 +42,9 @@ namespace VCardix{
             // LANGUAGE SET EVENTS
             englishToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             turkishToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
+            //
+            TSThemeModeHelper.InitializeGlobalTheme();
+            SystemEvents.UserPreferenceChanged += (s, e) => TSUseSystemTheme();
         }
         // GLOBAL VARIABLES
         // ======================================================================================================
@@ -49,7 +53,7 @@ namespace VCardix{
         public static object select_object;
         // LOCAL VARIABLES
         // ======================================================================================================
-        private int startup_status;
+        private int startup_status, themeSystem;
         private readonly int i_upload_size = 100;
         bool save_status = true;
         readonly string ts_wizard_name = "TS Wizard";
@@ -105,10 +109,12 @@ namespace VCardix{
             // ======================================================================================================
             TSSettingsSave software_read_settings = new TSSettingsSave(ts_sf);
             //
-            int theme_mode = int.TryParse(software_read_settings.TSReadSettings(ts_settings_container, "ThemeStatus"), out int the_status) ? the_status : 1;
-            Theme_engine(theme_mode);
+            int theme_mode = int.TryParse(software_read_settings.TSReadSettings(ts_settings_container, "ThemeStatus"), out int the_status) && (the_status == 0 || the_status == 1 || the_status == 2) ? the_status : 1;
+            if (theme_mode == 2) { themeSystem = 2; Theme_engine(GetSystemTheme(2)); } else Theme_engine(theme_mode);
             darkThemeToolStripMenuItem.Checked = theme_mode == 0;
             lightThemeToolStripMenuItem.Checked = theme_mode == 1;
+            systemThemeToolStripMenuItem.Checked = theme_mode == 2;
+            //
             string lang_mode = software_read_settings.TSReadSettings(ts_settings_container, "LanguageStatus");
             var languageFiles = new Dictionary<string, (object langResource, ToolStripMenuItem menuItem, bool fileExists)>{
                 { "en", (ts_lang_en, englishToolStripMenuItem, File.Exists(ts_lang_en)) },
@@ -133,7 +139,7 @@ namespace VCardix{
         // VCARDIX LOAD
         // ====================================================================================================== 
         private void VCardix_Load(object sender, EventArgs e){
-            Text = !Program.debug_mode ? TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode) : TS_VersionEngine.TS_SofwareVersion(3, Program.ts_version_mode);
+            Text = TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode);
             HeaderMenu.Cursor = Cursors.Hand;
             CXImageMenu.Cursor = Cursors.Hand;
             RunSoftwareEngine();
@@ -673,7 +679,7 @@ namespace VCardix{
         // ====================================================================================================== 
         private void LoadSaveTitle(int mode){
             TSGetLangs software_lang = new TSGetLangs(lang_path);
-            string main_title = !Program.debug_mode ? TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode) : TS_VersionEngine.TS_SofwareVersion(3, Program.ts_version_mode);
+            string main_title = TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode);
             if (mode == 0){
                 Text = string.Format(software_lang.TSReadLangs("VCardixUI", "vcui_load"), main_title);
             }else if (mode == 1){
@@ -684,26 +690,40 @@ namespace VCardix{
         }
         // THEME MODE
         // ======================================================================================================
+        private ToolStripMenuItem selected_theme = null;
         private void Select_theme_active(object target_theme){
-            ToolStripMenuItem selected_theme = null;
+            if (target_theme == null)
+                return;
+            ToolStripMenuItem clicked_theme = (ToolStripMenuItem)target_theme;
+            if (selected_theme == clicked_theme)
+                return;
             Select_theme_deactive();
-            if (target_theme != null){
-                if (selected_theme != (ToolStripMenuItem)target_theme){
-                    selected_theme = (ToolStripMenuItem)target_theme;
-                    selected_theme.Checked = true;
-                }
-            }
+            selected_theme = clicked_theme;
+            selected_theme.Checked = true;
         }
         private void Select_theme_deactive(){
-            foreach (ToolStripMenuItem disabled_theme in themeToolStripMenuItem.DropDownItems){
-                disabled_theme.Checked = false;
+            foreach (ToolStripMenuItem theme in themeToolStripMenuItem.DropDownItems){
+                theme.Checked = false;
             }
         }
+        // THEME SWAP
+        // ======================================================================================================
+        private void SystemThemeToolStripMenuItem_Click(object sender, EventArgs e){
+            themeSystem = 2; Theme_engine(GetSystemTheme(2)); SaveTheme(2); Select_theme_active(sender);
+        }
         private void LightThemeToolStripMenuItem_Click(object sender, EventArgs e){
-            if (theme != 1){ Theme_engine(1); Select_theme_active(sender); }
+            themeSystem = 0; Theme_engine(1); SaveTheme(1); Select_theme_active(sender);
         }
         private void DarkThemeToolStripMenuItem_Click(object sender, EventArgs e){
-            if (theme != 0){ Theme_engine(0); Select_theme_active(sender); }
+            themeSystem = 0; Theme_engine(0); SaveTheme(0); Select_theme_active(sender);
+        }
+        private void TSUseSystemTheme() { if (themeSystem == 2) Theme_engine(GetSystemTheme(2)); }
+        private void SaveTheme(int ts){
+            // SAVE CURRENT THEME
+            try{
+                TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
+                software_setting_save.TSWriteSettings(ts_settings_container, "ThemeStatus", Convert.ToString(ts));
+            }catch (Exception){ }
         }
         // THEME ENGINE
         // ======================================================================================================
@@ -711,7 +731,7 @@ namespace VCardix{
             try{
                 theme = ts;
                 //
-                TSSetWindowTheme(Handle, theme);
+                TSThemeModeHelper.SetThemeMode(ts == 0);
                 //
                 if (theme == 1){
                     // FILE
@@ -846,11 +866,6 @@ namespace VCardix{
                 MFLP3.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
                 //
                 Software_other_page_preloader();
-                // SAVE CURRENT THEME
-                try{
-                    TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
-                    software_setting_save.TSWriteSettings(ts_settings_container, "ThemeStatus", Convert.ToString(ts));
-                }catch (Exception){ }
             }catch (Exception){ }
         }
         private void SetMenuStripColors(MenuStrip menuStrip, Color bgColor, Color fgColor){
@@ -959,6 +974,7 @@ namespace VCardix{
                 themeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_theme");
                 lightThemeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderThemes", "theme_light");
                 darkThemeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderThemes", "theme_dark");
+                systemThemeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderThemes", "theme_system");
                 // LANGS
                 languageToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_language");
                 englishToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_en");
@@ -1167,7 +1183,7 @@ namespace VCardix{
                         TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(software_lang.TSReadLangs("HeaderHelp", "header_help_info_notification"), ts_wizard_name));
                     }
                 }else{
-                    DialogResult ts_wizard_query = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(software_lang.TSReadLangs("TSWizard", "tsw_content"), software_lang.TSReadLangs("HeaderMenu", "header_menu_ts_wizard"), Application.CompanyName, "\n\n", Application.ProductName, Application.CompanyName, "\n\n"), string.Format(software_lang.TSReadLangs("TSWizard", "tsw_title"), Application.ProductName));
+                    DialogResult ts_wizard_query = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(software_lang.TSReadLangs("TSWizard", "tsw_content"), software_lang.TSReadLangs("HeaderMenu", "header_menu_ts_wizard"), Application.CompanyName, "\n\n", Application.ProductName, Application.CompanyName, "\n\n"), string.Format("{0} - {1}", Application.ProductName, ts_wizard_name));
                     if (ts_wizard_query == DialogResult.Yes){
                         Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_wizard) { UseShellExecute = true });
                     }

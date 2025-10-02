@@ -73,7 +73,7 @@
             // 
             this.BtnSaveImg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
             this.BtnSaveImg.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
-            this.BtnSaveImg.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.BtnSaveImg.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(120)))), ((int)(((byte)(109)))));
             this.BtnSaveImg.BorderRadius = 10;
             this.BtnSaveImg.BorderSize = 0;
             this.BtnSaveImg.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -103,9 +103,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(300, 300);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "VCardixImagePreview";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VCardixImagePreview";
