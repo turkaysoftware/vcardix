@@ -43,6 +43,7 @@ With these instructions, you can download and use the correct version of VCardix
 
 - English
 - Turkish
+- **For translation support: [Translation Guide for VCardix](https://github.com/turkaysoftware/vcardix/discussions/1)**
 
 # Supported Themes
 
