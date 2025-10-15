@@ -11,9 +11,9 @@
 
 [Click here](https://www.turkaysoftware.com/vcardix) for full specifications.
 
-<img width="1010" height="633" alt="VCardix UI - Dark" src="https://github.com/user-attachments/assets/9f195bea-7fbd-4410-b5e4-0c8d4fac103c" />
+<img width="1010" height="633" alt="VCardix UI - Dark" src="https://github.com/user-attachments/assets/3c706f8a-ee8d-4fc9-90e4-abc9f23c0ae7" />
 
-<img width="1010" height="633" alt="VCardix UI - Light" src="https://github.com/user-attachments/assets/e59d293c-5a7d-46ed-8580-43f464f844c4" />
+<img width="1010" height="633" alt="VCardix UI - Light" src="https://github.com/user-attachments/assets/78f1570b-3e42-4fcf-8e1f-f649d4a7c08e" />
 
 # Download VCardix
 
