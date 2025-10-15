@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>25.11.0.%2a</ApplicationVersion>
+    <ApplicationVersion>25.12.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -201,20 +201,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="VCardixLogo.ico" />
-    <None Include="vcardix_images\vcardix_ui\theme_light\ct_bmac_mc_light.png" />
-    <None Include="vcardix_images\vcardix_ui\theme_light\ct_bmac_light.png" />
-    <None Include="vcardix_images\vcardix_ui\theme_dark\ct_bmac_mc_dark.png" />
-    <None Include="vcardix_images\vcardix_ui\theme_dark\ct_bmac_dark.png" />
+    <None Include="vcardix_images\vcardix_ui\theme_light\tm_donate_mc_light.png" />
+    <None Include="vcardix_images\vcardix_ui\theme_light\tm_donate_light.png" />
+    <None Include="vcardix_images\vcardix_ui\theme_dark\tm_donate_mc_dark.png" />
+    <None Include="vcardix_images\vcardix_ui\theme_dark\tm_donate_dark.png" />
+    <None Include="vcardix_images\ts_preloader\ts_preloader.jpg" />
     <None Include="vcardix_images\vcardix_ui\theme_light\ct_save_image_mc_light.png" />
     <None Include="vcardix_images\vcardix_ui\theme_dark\ct_save_image_mc_dark.png" />
     <None Include="vcardix_images\vcardix_ui\theme_light\ct_save_image_light.png" />
     <None Include="vcardix_images\vcardix_ui\theme_dark\ct_save_image_dark.png" />
-    <None Include="vcardix_images\vcardix_ui\theme_dark\ctb_check_dark.png" />
-    <None Include="vcardix_images\vcardix_ui\theme_light\ctb_check_light.png" />
-    <None Include="vcardix_images\vcardix_ui\theme_light\ctb_website_light.png" />
-    <None Include="vcardix_images\vcardix_ui\theme_light\ctb_github_light.png" />
-    <None Include="vcardix_images\vcardix_ui\theme_dark\ctb_website_dark.png" />
-    <None Include="vcardix_images\vcardix_ui\theme_dark\ctb_github_dark.png" />
     <None Include="vcardix_images\vcardix_ui\theme_dark\ct_show_image_dark.png" />
     <None Include="vcardix_images\vcardix_ui\theme_dark\ct_select_image_dark.png" />
     <None Include="vcardix_images\vcardix_ui\theme_dark\ct_delete_image_dark.png" />
@@ -227,7 +222,6 @@
     <None Include="vcardix_images\vcardix_ui\theme_light\ct_cancel_light.png" />
     <None Include="vcardix_images\vcardix_ui\theme_dark\ct_adress_window_dark.png" />
     <None Include="vcardix_images\vcardix_ui\theme_light\ct_adress_window_light.png" />
-    <None Include="vcardix_images\ts_preloader\ts_preloader.jpg" />
     <None Include="vcardix_images\vcardix_ui\theme_light\tm_vcard_light.png" />
     <None Include="vcardix_images\vcardix_ui\theme_light\tm_update_light.png" />
     <None Include="vcardix_images\vcardix_ui\theme_light\tm_ts_wizard_light.png" />
@@ -264,5 +258,6 @@
     <None Include="vcardix_images\vcardix_ui\theme_dark\ct_confirm_dark.png" />
     <None Include="vcardix_images\vcardix_ui\theme_dark\ct_add_dark.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

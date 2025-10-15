@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VCardixMain));
             this.BackPanel = new System.Windows.Forms.Panel();
+            this.BottomInfoLabel = new System.Windows.Forms.Label();
             this.BtnAdd = new VCardix.TSCustomButton();
             this.BtnDelete = new VCardix.TSCustomButton();
             this.BtnUpdate = new VCardix.TSCustomButton();
@@ -68,18 +69,6 @@
             this.textBoxPhoneMobile = new System.Windows.Forms.TextBox();
             this.textBoxEmail1 = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
-            this.FooterPanel = new System.Windows.Forms.Panel();
-            this.statusLabel = new System.Windows.Forms.Label();
-            this.BottomTickPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.MLPanel = new System.Windows.Forms.Panel();
-            this.BottomImage = new System.Windows.Forms.PictureBox();
-            this.MFLP = new System.Windows.Forms.FlowLayoutPanel();
-            this.MFLP3 = new System.Windows.Forms.Panel();
-            this.MLBmac = new System.Windows.Forms.PictureBox();
-            this.MFLP2 = new System.Windows.Forms.Panel();
-            this.MLGitHub = new System.Windows.Forms.PictureBox();
-            this.MFLP1 = new System.Windows.Forms.Panel();
-            this.MLWeb = new System.Windows.Forms.PictureBox();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.HeaderMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,6 +96,7 @@
             this.fullScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tSWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.CXImageMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -117,30 +107,19 @@
             this.BackPanel.SuspendLayout();
             this.UIPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ContactUserImage)).BeginInit();
-            this.FooterPanel.SuspendLayout();
-            this.BottomTickPanel.SuspendLayout();
-            this.MLPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BottomImage)).BeginInit();
-            this.MFLP.SuspendLayout();
-            this.MFLP3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MLBmac)).BeginInit();
-            this.MFLP2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MLGitHub)).BeginInit();
-            this.MFLP1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MLWeb)).BeginInit();
             this.HeaderMenu.SuspendLayout();
             this.CXImageMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // BackPanel
             // 
+            this.BackPanel.Controls.Add(this.BottomInfoLabel);
             this.BackPanel.Controls.Add(this.BtnAdd);
             this.BackPanel.Controls.Add(this.BtnDelete);
             this.BackPanel.Controls.Add(this.BtnUpdate);
             this.BackPanel.Controls.Add(this.ContactList);
             this.BackPanel.Controls.Add(this.UIPanel);
             this.BackPanel.Controls.Add(this.lblSearch);
-            this.BackPanel.Controls.Add(this.FooterPanel);
             this.BackPanel.Controls.Add(this.textBoxSearch);
             this.BackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BackPanel.Location = new System.Drawing.Point(0, 24);
@@ -148,6 +127,20 @@
             this.BackPanel.Padding = new System.Windows.Forms.Padding(10);
             this.BackPanel.Size = new System.Drawing.Size(1008, 577);
             this.BackPanel.TabIndex = 1;
+            // 
+            // BottomInfoLabel
+            // 
+            this.BottomInfoLabel.BackColor = System.Drawing.Color.White;
+            this.BottomInfoLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.BottomInfoLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.BottomInfoLabel.Location = new System.Drawing.Point(10, 535);
+            this.BottomInfoLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.BottomInfoLabel.Name = "BottomInfoLabel";
+            this.BottomInfoLabel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.BottomInfoLabel.Size = new System.Drawing.Size(255, 30);
+            this.BottomInfoLabel.TabIndex = 6;
+            this.BottomInfoLabel.Text = "N/A Contact";
+            this.BottomInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BtnAdd
             // 
@@ -272,8 +265,8 @@
             this.UIPanel.Location = new System.Drawing.Point(273, 13);
             this.UIPanel.Name = "UIPanel";
             this.UIPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.UIPanel.Size = new System.Drawing.Size(725, 511);
-            this.UIPanel.TabIndex = 6;
+            this.UIPanel.Size = new System.Drawing.Size(725, 552);
+            this.UIPanel.TabIndex = 7;
             // 
             // BtnOpenAdressWindow
             // 
@@ -320,7 +313,7 @@
             this.ContactUserImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ContactUserImage.Location = new System.Drawing.Point(212, 447);
             this.ContactUserImage.Name = "ContactUserImage";
-            this.ContactUserImage.Size = new System.Drawing.Size(91, 51);
+            this.ContactUserImage.Size = new System.Drawing.Size(162, 91);
             this.ContactUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ContactUserImage.TabIndex = 30;
             this.ContactUserImage.TabStop = false;
@@ -358,7 +351,7 @@
             this.lblProfileImage.BackColor = System.Drawing.Color.Transparent;
             this.lblProfileImage.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.lblProfileImage.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblProfileImage.Location = new System.Drawing.Point(10, 463);
+            this.lblProfileImage.Location = new System.Drawing.Point(10, 483);
             this.lblProfileImage.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblProfileImage.Name = "lblProfileImage";
             this.lblProfileImage.Size = new System.Drawing.Size(94, 19);
@@ -691,148 +684,6 @@
             this.lblSearch.TabIndex = 0;
             this.lblSearch.Text = "Ara:";
             // 
-            // FooterPanel
-            // 
-            this.FooterPanel.BackColor = System.Drawing.Color.White;
-            this.FooterPanel.Controls.Add(this.statusLabel);
-            this.FooterPanel.Controls.Add(this.BottomTickPanel);
-            this.FooterPanel.Controls.Add(this.MFLP);
-            this.FooterPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.FooterPanel.Location = new System.Drawing.Point(10, 532);
-            this.FooterPanel.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.FooterPanel.Name = "FooterPanel";
-            this.FooterPanel.Size = new System.Drawing.Size(988, 35);
-            this.FooterPanel.TabIndex = 7;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.statusLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Bold);
-            this.statusLabel.Location = new System.Drawing.Point(35, 0);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.statusLabel.Size = new System.Drawing.Size(531, 35);
-            this.statusLabel.TabIndex = 1;
-            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // BottomTickPanel
-            // 
-            this.BottomTickPanel.AutoSize = true;
-            this.BottomTickPanel.Controls.Add(this.MLPanel);
-            this.BottomTickPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BottomTickPanel.Location = new System.Drawing.Point(0, 0);
-            this.BottomTickPanel.Name = "BottomTickPanel";
-            this.BottomTickPanel.Size = new System.Drawing.Size(35, 35);
-            this.BottomTickPanel.TabIndex = 4;
-            this.BottomTickPanel.Visible = false;
-            // 
-            // MLPanel
-            // 
-            this.MLPanel.Controls.Add(this.BottomImage);
-            this.MLPanel.Location = new System.Drawing.Point(3, 3);
-            this.MLPanel.Name = "MLPanel";
-            this.MLPanel.Padding = new System.Windows.Forms.Padding(7);
-            this.MLPanel.Size = new System.Drawing.Size(29, 29);
-            this.MLPanel.TabIndex = 0;
-            // 
-            // BottomImage
-            // 
-            this.BottomImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BottomImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BottomImage.Location = new System.Drawing.Point(7, 7);
-            this.BottomImage.Name = "BottomImage";
-            this.BottomImage.Size = new System.Drawing.Size(15, 15);
-            this.BottomImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.BottomImage.TabIndex = 5;
-            this.BottomImage.TabStop = false;
-            // 
-            // MFLP
-            // 
-            this.MFLP.Controls.Add(this.MFLP3);
-            this.MFLP.Controls.Add(this.MFLP2);
-            this.MFLP.Controls.Add(this.MFLP1);
-            this.MFLP.Dock = System.Windows.Forms.DockStyle.Right;
-            this.MFLP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.MFLP.Location = new System.Drawing.Point(880, 0);
-            this.MFLP.Name = "MFLP";
-            this.MFLP.Size = new System.Drawing.Size(108, 35);
-            this.MFLP.TabIndex = 3;
-            // 
-            // MFLP3
-            // 
-            this.MFLP3.BackColor = System.Drawing.Color.BurlyWood;
-            this.MFLP3.Controls.Add(this.MLBmac);
-            this.MFLP3.Location = new System.Drawing.Point(76, 3);
-            this.MFLP3.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
-            this.MFLP3.Name = "MFLP3";
-            this.MFLP3.Padding = new System.Windows.Forms.Padding(5);
-            this.MFLP3.Size = new System.Drawing.Size(29, 29);
-            this.MFLP3.TabIndex = 16;
-            // 
-            // MLBmac
-            // 
-            this.MLBmac.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MLBmac.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MLBmac.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MLBmac.Location = new System.Drawing.Point(5, 5);
-            this.MLBmac.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.MLBmac.Name = "MLBmac";
-            this.MLBmac.Size = new System.Drawing.Size(19, 19);
-            this.MLBmac.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.MLBmac.TabIndex = 10;
-            this.MLBmac.TabStop = false;
-            this.MLBmac.Click += new System.EventHandler(this.MLBmac_Click);
-            // 
-            // MFLP2
-            // 
-            this.MFLP2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.MFLP2.Controls.Add(this.MLGitHub);
-            this.MFLP2.Location = new System.Drawing.Point(45, 3);
-            this.MFLP2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.MFLP2.Name = "MFLP2";
-            this.MFLP2.Padding = new System.Windows.Forms.Padding(5);
-            this.MFLP2.Size = new System.Drawing.Size(29, 29);
-            this.MFLP2.TabIndex = 12;
-            // 
-            // MLGitHub
-            // 
-            this.MLGitHub.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MLGitHub.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MLGitHub.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MLGitHub.Location = new System.Drawing.Point(5, 5);
-            this.MLGitHub.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.MLGitHub.Name = "MLGitHub";
-            this.MLGitHub.Size = new System.Drawing.Size(19, 19);
-            this.MLGitHub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.MLGitHub.TabIndex = 7;
-            this.MLGitHub.TabStop = false;
-            this.MLGitHub.Click += new System.EventHandler(this.MLGitHub_Click);
-            // 
-            // MFLP1
-            // 
-            this.MFLP1.BackColor = System.Drawing.Color.DarkKhaki;
-            this.MFLP1.Controls.Add(this.MLWeb);
-            this.MFLP1.Location = new System.Drawing.Point(14, 3);
-            this.MFLP1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.MFLP1.Name = "MFLP1";
-            this.MFLP1.Padding = new System.Windows.Forms.Padding(5);
-            this.MFLP1.Size = new System.Drawing.Size(29, 29);
-            this.MFLP1.TabIndex = 15;
-            // 
-            // MLWeb
-            // 
-            this.MLWeb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MLWeb.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MLWeb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MLWeb.Location = new System.Drawing.Point(5, 5);
-            this.MLWeb.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.MLWeb.Name = "MLWeb";
-            this.MLWeb.Size = new System.Drawing.Size(19, 19);
-            this.MLWeb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.MLWeb.TabIndex = 10;
-            this.MLWeb.TabStop = false;
-            this.MLWeb.Click += new System.EventHandler(this.MLWeb_Click);
-            // 
             // textBoxSearch
             // 
             this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -852,6 +703,7 @@
             this.sortingModeToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.tSWizardToolStripMenuItem,
+            this.donateToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.HeaderMenu.Location = new System.Drawing.Point(0, 0);
             this.HeaderMenu.Name = "HeaderMenu";
@@ -1080,6 +932,16 @@
             this.tSWizardToolStripMenuItem.Text = "TSWizard";
             this.tSWizardToolStripMenuItem.Click += new System.EventHandler(this.TSWizardToolStripMenuItem_Click);
             // 
+            // donateToolStripMenuItem
+            // 
+            this.donateToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
+            this.donateToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D)));
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.donateToolStripMenuItem.Text = "Donate";
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.DonateToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1156,18 +1018,6 @@
             this.UIPanel.ResumeLayout(false);
             this.UIPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ContactUserImage)).EndInit();
-            this.FooterPanel.ResumeLayout(false);
-            this.FooterPanel.PerformLayout();
-            this.BottomTickPanel.ResumeLayout(false);
-            this.MLPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BottomImage)).EndInit();
-            this.MFLP.ResumeLayout(false);
-            this.MFLP3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MLBmac)).EndInit();
-            this.MFLP2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MLGitHub)).EndInit();
-            this.MFLP1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MLWeb)).EndInit();
             this.HeaderMenu.ResumeLayout(false);
             this.HeaderMenu.PerformLayout();
             this.CXImageMenu.ResumeLayout(false);
@@ -1194,8 +1044,6 @@
         internal System.Windows.Forms.Label lblLastName;
         internal System.Windows.Forms.Label lblMiddleName;
         internal System.Windows.Forms.Label lblFirstName;
-        private System.Windows.Forms.Panel FooterPanel;
-        private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.TextBox textBoxOrganization;
         private System.Windows.Forms.TextBox textBoxNote;
@@ -1242,26 +1090,18 @@
         private System.Windows.Forms.ToolStripMenuItem sortingFullNameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sortingLastNameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sortingFirstNameToolStripMenuItem;
-        private System.Windows.Forms.FlowLayoutPanel MFLP;
-        private System.Windows.Forms.Panel MFLP2;
-        private System.Windows.Forms.PictureBox MLGitHub;
-        private System.Windows.Forms.Panel MFLP1;
-        private System.Windows.Forms.PictureBox MLWeb;
-        private System.Windows.Forms.FlowLayoutPanel BottomTickPanel;
-        private System.Windows.Forms.Panel MLPanel;
-        private System.Windows.Forms.PictureBox BottomImage;
         private System.Windows.Forms.ToolStripMenuItem sortingPhoneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cxSaveImageToolStripMenuItem;
         private System.Windows.Forms.ListBox ContactList;
         private System.Windows.Forms.PictureBox ContactUserImage;
-        private System.Windows.Forms.Panel MFLP3;
-        private System.Windows.Forms.PictureBox MLBmac;
         private TSCustomDateTimePicker dateTimePickerBirthday;
         private TSCustomButton BtnUpdate;
         private TSCustomButton BtnAdd;
         private TSCustomButton BtnDelete;
         public TSCustomButton BtnOpenAdressWindow;
         private System.Windows.Forms.ToolStripMenuItem systemThemeToolStripMenuItem;
+        internal System.Windows.Forms.Label BottomInfoLabel;
+        private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
     }
 }
 

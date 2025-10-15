@@ -118,24 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ctb_check_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vcardix_images\vcardix_ui\theme_dark\ctb_check_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ctb_check_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vcardix_images\vcardix_ui\theme_light\ctb_check_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ctb_github_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vcardix_images\vcardix_ui\theme_dark\ctb_github_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ctb_github_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vcardix_images\vcardix_ui\theme_light\ctb_github_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ctb_website_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vcardix_images\vcardix_ui\theme_dark\ctb_website_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ctb_website_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vcardix_images\vcardix_ui\theme_light\ctb_website_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ct_add_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\vcardix_images\vcardix_ui\theme_dark\ct_add_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -147,18 +129,6 @@
   </data>
   <data name="ct_adress_window_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\vcardix_images\vcardix_ui\theme_light\ct_adress_window_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ct_bmac_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vcardix_images\vcardix_ui\theme_dark\ct_bmac_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ct_bmac_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vcardix_images\vcardix_ui\theme_light\ct_bmac_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ct_bmac_mc_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vcardix_images\vcardix_ui\theme_dark\ct_bmac_mc_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ct_bmac_mc_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vcardix_images\vcardix_ui\theme_light\ct_bmac_mc_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ct_cancel_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\vcardix_images\vcardix_ui\theme_dark\ct_cancel_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -231,6 +201,18 @@
   </data>
   <data name="tm_about_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\vcardix_images\vcardix_ui\theme_light\tm_about_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tm_donate_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_dark\tm_donate_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tm_donate_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_light\tm_donate_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tm_donate_mc_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_dark\tm_donate_mc_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tm_donate_mc_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vcardix_images\vcardix_ui\theme_light\tm_donate_mc_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_export_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\vcardix_images\vcardix_ui\theme_dark\tm_export_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

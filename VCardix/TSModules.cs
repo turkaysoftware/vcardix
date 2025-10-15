@@ -27,7 +27,7 @@ namespace VCardix{
             github_link     = "https://github.com/turkaysoftware",
             // Other Links
             ts_wizard       = "https://www.turkaysoftware.com/ts-wizard",
-            ts_bmac         = "https://buymeacoffee.com/turkaysoftware";
+            ts_donate       = "https://buymeacoffee.com/turkaysoftware";
         }
         // VERSIONS
         // ======================================================================================================

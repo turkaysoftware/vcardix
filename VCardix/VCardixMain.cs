@@ -177,11 +177,9 @@ namespace VCardix{
             ContactList.Items.AddRange(VCardManager.ContactsList.OrderBy(c => TSNaturalSortKey(c.FullName ?? string.Empty, CultureInfo.CurrentCulture)).ToArray());
             if (ContactList.Items.Count > 0){
                 TSGetLangs software_lang = new TSGetLangs(lang_path);
-                statusLabel.Text = string.Format(software_lang.TSReadLangs("VCardixUI", "vcui_bottom_ready"), ContactList.Items.Count.ToString());
-                BottomTickPanel.Visible = true;
+                BottomInfoLabel.Text = string.Format(software_lang.TSReadLangs("VCardixUI", "vcui_bottom_ready"), ContactList.Items.Count.ToString());
             }else{
-                statusLabel.Text = string.Empty;
-                BottomTickPanel.Visible = false;
+                BottomInfoLabel.Text = "Başlatma bekleniyor...";
             }
         }
         // CLEAR UI
@@ -318,15 +316,26 @@ namespace VCardix{
         }
         private void CxImageSelectToolStripMenuItem_Click(object sender, EventArgs e){
             TSGetLangs software_lang = new TSGetLangs(lang_path);
-            using (OpenFileDialog ofd = new OpenFileDialog()){
-                ofd.Title = string.Format(software_lang.TSReadLangs("VCardixUI", "vcui_select_image"), Application.ProductName);
-                ofd.Filter = string.Format(software_lang.TSReadLangs("VCardixUI", "vcui_image_filter"), "|*.jpg;*.jpeg;*.png;*.bmp;*.tif;*.tiff");
-                ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                ofd.RestoreDirectory = true;
-                ofd.CheckFileExists = true;
-                ofd.Multiselect = false;
-                if (ofd.ShowDialog() == DialogResult.OK){
-                    AddImageToSelectedContact(ofd.FileName);
+            bool imageSelectMode = false;
+            if (ContactUserImage.Image != null){
+                DialogResult image_change_query = TS_MessageBoxEngine.TS_MessageBox(this, 5, software_lang.TSReadLangs("VCardixUI", "vcui_image_change_info"));
+                if (image_change_query == DialogResult.Yes){
+                    imageSelectMode = true;
+                }
+            }else{
+                imageSelectMode = true;
+            }
+            if (imageSelectMode){
+                using (OpenFileDialog ofd = new OpenFileDialog()){
+                    ofd.Title = string.Format(software_lang.TSReadLangs("VCardixUI", "vcui_select_image"), Application.ProductName);
+                    ofd.Filter = string.Format(software_lang.TSReadLangs("VCardixUI", "vcui_image_filter"), "|*.jpg;*.jpeg;*.png;*.bmp;*.tif;*.tiff");
+                    ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    ofd.RestoreDirectory = true;
+                    ofd.CheckFileExists = true;
+                    ofd.Multiselect = false;
+                    if (ofd.ShowDialog() == DialogResult.OK){
+                        AddImageToSelectedContact(ofd.FileName, imageSelectMode);
+                    }
                 }
             }
         }
@@ -383,7 +392,7 @@ namespace VCardix{
                 TS_MessageBoxEngine.TS_MessageBox(this, 1, software_lang.TSReadLangs("VCardixUI", "vcui_image_remove_success"));
             }
         }
-        private void AddImageToSelectedContact(string imagePath){
+        private void AddImageToSelectedContact(string imagePath, bool imageMode){
             TSGetLangs software_lang = new TSGetLangs(lang_path);
             if (ContactList.Items.Count == 0){
                 TS_MessageBoxEngine.TS_MessageBox(this, 2, software_lang.TSReadLangs("VCardixUI", "vcui_image_person_not_added_warning"));
@@ -408,7 +417,11 @@ namespace VCardix{
                     selected.PhotoBase64 = base64;
                     TSImageHelper.SetPictureBoxImage(ContactUserImage, selected.PhotoImage);
                     VCardManager.UpdateContact(selected.Id, selected);
-                    TS_MessageBoxEngine.TS_MessageBox(this, 1, software_lang.TSReadLangs("VCardixUI", "vcui_image_import_success"));
+                    save_status = false;
+                    if (!imageMode)
+                        TS_MessageBoxEngine.TS_MessageBox(this, 1, software_lang.TSReadLangs("VCardixUI", "vcui_image_import_success"));
+                    else
+                        TS_MessageBoxEngine.TS_MessageBox(this, 1, software_lang.TSReadLangs("VCardixUI", "vcui_image_update_success"));
                 }
             }catch (Exception ex){
                 TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(software_lang.TSReadLangs("VCardixUI", "vcui_image_import_failed"), "\n\n", ex.Message));
@@ -525,8 +538,16 @@ namespace VCardix{
             string[] imageExtensions = { ".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff" };
             try{
                 if (imageExtensions.Contains(ext)){
-                    AddImageToSelectedContact(drop_file);
-                    return;
+                    if (ContactUserImage.Image == null){
+                        AddImageToSelectedContact(drop_file, false);
+                        return;
+                    }else{
+                        DialogResult image_change_query = TS_MessageBoxEngine.TS_MessageBox(this, 5, software_lang.TSReadLangs("VCardixUI", "vcui_image_change_info"));
+                        if (image_change_query == DialogResult.Yes){
+                            AddImageToSelectedContact(drop_file, true);
+                        }
+                        return;
+                    }
                 }
                 if (ext == ".vcf" || ext == ".csv" || ext == ".json"){
                     if (ContactList.Items.Count > 0){
@@ -749,6 +770,7 @@ namespace VCardix{
                     TSImageRenderer(startupToolStripMenuItem, Properties.Resources.tm_startup_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(checkForUpdateToolStripMenuItem, Properties.Resources.tm_update_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(tSWizardToolStripMenuItem, Properties.Resources.tm_ts_wizard_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(donateToolStripMenuItem, Properties.Resources.tm_donate_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(aboutToolStripMenuItem, Properties.Resources.tm_about_light, 0, ContentAlignment.MiddleRight);
                     //
                     TSImageRenderer(BtnAdd, Properties.Resources.ct_add_light, 18, ContentAlignment.MiddleLeft);
@@ -761,12 +783,6 @@ namespace VCardix{
                     TSImageRenderer(cxViewImageToolStripMenuItem, Properties.Resources.ct_show_image_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(cxSaveImageToolStripMenuItem, Properties.Resources.ct_save_image_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(cxRemoveImageToolStripMenuItem, Properties.Resources.ct_delete_image_light, 0, ContentAlignment.MiddleRight);
-                    //
-                    TSImageRenderer(BottomImage, Properties.Resources.ctb_check_light, 0, ContentAlignment.MiddleCenter);
-                    //
-                    TSImageRenderer(MLWeb, Properties.Resources.ctb_website_light, 0, ContentAlignment.MiddleCenter);
-                    TSImageRenderer(MLGitHub, Properties.Resources.ctb_github_light, 0, ContentAlignment.MiddleCenter);
-                    TSImageRenderer(MLBmac, Properties.Resources.ct_bmac_light, 0, ContentAlignment.MiddleCenter);
                 }else if (theme == 0){
                     // FILE
                     TSImageRenderer(fileToolStripMenuItem, Properties.Resources.tm_file_dark, 0, ContentAlignment.MiddleRight);
@@ -783,6 +799,7 @@ namespace VCardix{
                     TSImageRenderer(startupToolStripMenuItem, Properties.Resources.tm_startup_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(checkForUpdateToolStripMenuItem, Properties.Resources.tm_update_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(tSWizardToolStripMenuItem, Properties.Resources.tm_ts_wizard_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(donateToolStripMenuItem, Properties.Resources.tm_donate_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(aboutToolStripMenuItem, Properties.Resources.tm_about_dark, 0, ContentAlignment.MiddleRight);
                     //
                     TSImageRenderer(BtnAdd, Properties.Resources.ct_add_dark, 18, ContentAlignment.MiddleLeft);
@@ -795,12 +812,6 @@ namespace VCardix{
                     TSImageRenderer(cxViewImageToolStripMenuItem, Properties.Resources.ct_show_image_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(cxSaveImageToolStripMenuItem, Properties.Resources.ct_save_image_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(cxRemoveImageToolStripMenuItem, Properties.Resources.ct_delete_image_dark, 0, ContentAlignment.MiddleRight);
-                    //
-                    TSImageRenderer(BottomImage, Properties.Resources.ctb_check_dark, 0, ContentAlignment.MiddleCenter);
-                    //
-                    TSImageRenderer(MLWeb, Properties.Resources.ctb_website_dark, 0, ContentAlignment.MiddleCenter);
-                    TSImageRenderer(MLGitHub, Properties.Resources.ctb_github_dark, 0, ContentAlignment.MiddleCenter);
-                    TSImageRenderer(MLBmac, Properties.Resources.ct_bmac_dark, 0, ContentAlignment.MiddleCenter);
                 }
                 // HEADER
                 header_colors[0] = TS_ThemeEngine.ColorMode(theme, "HeaderBGColorMain");
@@ -847,6 +858,8 @@ namespace VCardix{
                 textBoxSearch.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor");
                 textBoxSearch.ForeColor = TS_ThemeEngine.ColorMode(theme, "AccentColorText");
                 //
+                BottomInfoLabel.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor");
+                //
                 UIPanel.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor");
                 //
                 dateTimePickerBirthday.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
@@ -856,14 +869,6 @@ namespace VCardix{
                 dateTimePickerBirthday.FocusedBorderColor = TS_ThemeEngine.ColorMode(theme, "BorderColor");
                 //
                 ContactUserImage.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
-                //
-                FooterPanel.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor");
-                FooterPanel.ForeColor = TS_ThemeEngine.ColorMode(theme, "AccentColorText");
-                MLPanel.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
-                //
-                MFLP1.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
-                MFLP2.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
-                MFLP3.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
                 //
                 Software_other_page_preloader();
             }catch (Exception){ }
@@ -985,6 +990,8 @@ namespace VCardix{
                 fullScreenToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderViewMode", "header_viev_mode_full_screen");
                 // UPDATE
                 checkForUpdateToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_update");
+                // DONATE
+                donateToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_donate");
                 // TS WIZARD
                 tSWizardToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_ts_wizard");
                 // ABOUT
@@ -1004,7 +1011,7 @@ namespace VCardix{
                 lblMiddleName.Text = software_lang.TSReadLangs("VCardixUI", "vcui_f_sec_name");
                 lblLastName.Text = software_lang.TSReadLangs("VCardixUI", "vcui_f_surname");
                 lblBirthday.Text = software_lang.TSReadLangs("VCardixUI", "vcui_f_birthday");
-                lblPhoneHome.Text = software_lang.TSReadLangs("VCardixUI", "vcui_f_phone_cell");
+                lblPhoneCell.Text = software_lang.TSReadLangs("VCardixUI", "vcui_f_phone_cell");
                 lblPhoneHome.Text = software_lang.TSReadLangs("VCardixUI", "vcui_f_phone_home");
                 lblPhoneWork.Text = software_lang.TSReadLangs("VCardixUI", "vcui_f_phone_work");
                 lblMail1.Text = software_lang.TSReadLangs("VCardixUI", "vcui_f_email_1");
@@ -1016,18 +1023,16 @@ namespace VCardix{
                 lblNote.Text = software_lang.TSReadLangs("VCardixUI", "vcui_f_note");
                 lblProfileImage.Text = software_lang.TSReadLangs("VCardixUI", "vcui_f_profile_image");
                 //
-                if (ContactList.Items.Count > 0){
-                    statusLabel.Text = string.Format(software_lang.TSReadLangs("VCardixUI", "vcui_bottom_ready"), ContactList.Items.Count.ToString());
+                if (ContactList.Items.Count == 0){
+                    BottomInfoLabel.Text = software_lang.TSReadLangs("VCardixUI", "vcui_bottom_ready_empty");
+                }else{
+                    BottomInfoLabel.Text = string.Format(software_lang.TSReadLangs("VCardixUI", "vcui_bottom_ready"), ContactList.Items.Count.ToString());
                 }
                 //
                 MainToolTip.RemoveAll();
                 MainToolTip.SetToolTip(textBoxSearch, software_lang.TSReadLangs("VCardixUI", "vcui_search_hover"));
                 MainToolTip.SetToolTip(BtnOpenAdressWindow, software_lang.TSReadLangs("VCardixUI", "vcui_adress_window_hover"));
                 MainToolTip.SetToolTip(ContactUserImage, software_lang.TSReadLangs("VCardixUI", "vcui_profile_image_hover"));
-                //
-                MainToolTip.SetToolTip(MLWeb, software_lang.TSReadLangs("SoftwareAbout", "sa_website_page"));
-                MainToolTip.SetToolTip(MLGitHub, software_lang.TSReadLangs("SoftwareAbout", "sa_github_page"));
-                MainToolTip.SetToolTip(MLBmac, software_lang.TSReadLangs("SoftwareAbout", "sa_bmac_page"));
                 //
                 Software_other_page_preloader();
             }catch (Exception){ }
@@ -1059,23 +1064,6 @@ namespace VCardix{
             try{
                 TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
                 software_setting_save.TSWriteSettings(ts_settings_container, "StartupStatus", get_startup_value);
-            }catch (Exception){ }
-        }
-        // MEDIA LINKS
-        // ======================================================================================================
-        private void MLWeb_Click(object sender, EventArgs e){
-            try{
-                Process.Start(new ProcessStartInfo(TS_LinkSystem.website_link){ UseShellExecute = true });
-            }catch (Exception){ }
-        }
-        private void MLGitHub_Click(object sender, EventArgs e){
-            try{
-                Process.Start(new ProcessStartInfo(TS_LinkSystem.github_link){ UseShellExecute = true });
-            }catch (Exception){ }
-        }
-        private void MLBmac_Click(object sender, EventArgs e){
-            try{
-                Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_bmac){ UseShellExecute = true });
             }catch (Exception){ }
         }
         // SOFTWARE OPERATION CONTROLLER MODULE
@@ -1225,6 +1213,13 @@ namespace VCardix{
         // IMAGE PREVIEW WINDOW
         private void CxViewImageToolStripMenuItem_Click(object sender, EventArgs e){
             TSToolLauncher<VCardixImagePreview>("vcardix_image_preview", "vci_name", true);
+        }
+        // DONATE LINK
+        // ======================================================================================================
+        private void DonateToolStripMenuItem_Click(object sender, EventArgs e){
+            try{
+                Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_donate){ UseShellExecute = true });
+            }catch (Exception){ }
         }
         // VCARDIX ABOUT
         // ======================================================================================================
