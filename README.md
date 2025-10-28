@@ -37,21 +37,13 @@ After downloading the VCardix application, you will find two options: **VCardix_
 
 With these instructions, you can download and use the correct version of VCardix for your device. If you need further assistance, please feel free to reach out!
 
-# Supported Languages
+# Advanced Features
+- **Multi-Architecture Support:** Fully compatible with x64-x86 and ARM processors.
+- **Multi-Language System:** Fully supports 14 or more languages. **Supported Languages:** _Arabic, Chinese, English, French, German, Hindi, Italian, Japanase, Korean, Polish, Portuguese, Russian, Spanish, Turkish_ | **For translation support: [Translation Guide for VCardix](https://github.com/turkaysoftware/vcardix/discussions/1)**
+- Advanced interface features such as Light / Dark / System Theme.
+- [TS Wizard](https://www.turkaysoftware.com/ts-wizard) provides an automatic update and monitoring system.
 
-- English
-- Turkish
-- **For translation support: [Translation Guide for VCardix](https://github.com/turkaysoftware/vcardix/discussions/1)**
-
-# Supported Themes
-
-- Light Theme
-- Dark Theme
-
-# Supported Processor Architectures
-
-- x64 (64 Bit)
-- ARM64 (ARM CPU)
+<img width="396" height="335" alt="VCardix - Advanced Features" src="https://github.com/user-attachments/assets/1493f573-f71d-482c-a075-e60fdd4f1fea" />
 
 # System Requirements
 
