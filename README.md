@@ -9,7 +9,7 @@
 
 [Click here](https://www.turkaysoftware.com/vcardix) for full specifications.
 
-<img width="1010" height="633" alt="VCardix UI" src="https://github.com/user-attachments/assets/3f3fe841-1738-45f2-9e05-82153c7dddf3" />
+![VCardix UI](https://github.com/user-attachments/assets/b4c45992-31da-47c7-bb32-6cfc2fb3284b)
 
 # Download VCardix
 
