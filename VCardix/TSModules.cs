@@ -15,6 +15,9 @@ using System.Windows.Forms;
 
 namespace VCardix{
     internal class TSModules{
+        // STARTUP LOCATION
+        // ======================================================================================================
+        private static readonly string StartupPath = Application.StartupPath;
         // LINK SYSTEM
         // ======================================================================================================
         public class TS_LinkSystem{
@@ -119,9 +122,8 @@ namespace VCardix{
         }
         // SETTINGS SAVE PATHS
         // ======================================================================================================
-        public static string ts_df = Application.StartupPath;
-        public static string ts_sf = ts_df + @"\" + Application.ProductName + "Settings.ini";
-        public static string ts_settings_container = Path.GetFileNameWithoutExtension(ts_sf);
+        public static readonly string ts_sf = StartupPath + @"\" + Application.ProductName + "Settings.ini";
+        public static readonly string ts_settings_container = Path.GetFileNameWithoutExtension(ts_sf);
         // SETTINGS SAVE CLASS
         // ======================================================================================================
         public class TSSettingsSave{
@@ -198,24 +200,24 @@ namespace VCardix{
         }
         // READ LANG PATHS
         // ======================================================================================================
-        public static string ts_lf = @"vc_langs";                           // Main Path
-        public static string ts_lang_ar = ts_lf + @"\Arabic.ini";           // Arabic       | ar
-        public static string ts_lang_zh = ts_lf + @"\Chinese.ini";          // Chinese      | zh
-        public static string ts_lang_en = ts_lf + @"\English.ini";          // English      | en
-        public static string ts_lang_fr = ts_lf + @"\French.ini";           // French       | fr
-        public static string ts_lang_de = ts_lf + @"\German.ini";           // German       | de
-        public static string ts_lang_hi = ts_lf + @"\Hindi.ini";            // Hindi        | hi
-        public static string ts_lang_it = ts_lf + @"\Italian.ini";          // Italian      | it
-        public static string ts_lang_ja = ts_lf + @"\Japanese.ini";         // Japanese     | ja
-        public static string ts_lang_ko = ts_lf + @"\Korean.ini";           // Korean       | ko
-        public static string ts_lang_pl = ts_lf + @"\Polish.ini";           // Polish       | pl
-        public static string ts_lang_pt = ts_lf + @"\Portuguese.ini";       // Portuguese   | pt
-        public static string ts_lang_ru = ts_lf + @"\Russian.ini";          // Russian      | ru
-        public static string ts_lang_es = ts_lf + @"\Spanish.ini";          // Spanish      | es
-        public static string ts_lang_tr = ts_lf + @"\Turkish.ini";          // Turkish      | tr
+        public static readonly string ts_lf = Path.Combine(StartupPath, "vc_langs");    // Main Path
+        public static readonly string ts_lang_ar = ts_lf + @"\Arabic.ini";              // Arabic       | ar
+        public static readonly string ts_lang_zh = ts_lf + @"\Chinese.ini";             // Chinese      | zh
+        public static readonly string ts_lang_en = ts_lf + @"\English.ini";             // English      | en
+        public static readonly string ts_lang_fr = ts_lf + @"\French.ini";              // French       | fr
+        public static readonly string ts_lang_de = ts_lf + @"\German.ini";              // German       | de
+        public static readonly string ts_lang_hi = ts_lf + @"\Hindi.ini";               // Hindi        | hi
+        public static readonly string ts_lang_it = ts_lf + @"\Italian.ini";             // Italian      | it
+        public static readonly string ts_lang_ja = ts_lf + @"\Japanese.ini";            // Japanese     | ja
+        public static readonly string ts_lang_ko = ts_lf + @"\Korean.ini";              // Korean       | ko
+        public static readonly string ts_lang_pl = ts_lf + @"\Polish.ini";              // Polish       | pl
+        public static readonly string ts_lang_pt = ts_lf + @"\Portuguese.ini";          // Portuguese   | pt
+        public static readonly string ts_lang_ru = ts_lf + @"\Russian.ini";             // Russian      | ru
+        public static readonly string ts_lang_es = ts_lf + @"\Spanish.ini";             // Spanish      | es
+        public static readonly string ts_lang_tr = ts_lf + @"\Turkish.ini";             // Turkish      | tr
         // LANGUAGE MANAGE FUNCTIONS
         // ======================================================================================================
-        public static Dictionary<string, string> AllLanguageFiles = new Dictionary<string, string> {
+        public static readonly Dictionary<string, string> AllLanguageFiles = new Dictionary<string, string> {
             { "ar", ts_lang_ar },
             { "zh", ts_lang_zh },
             { "en", ts_lang_en },

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+//
 using static VCardix.TSModules;
 using static VCardix.VCardixModule;
 
@@ -56,7 +57,6 @@ namespace VCardix{
         // ======================================================================================================
         private void VCardixImagePreview_FormClosing(object sender, FormClosingEventArgs e){
             TSImageHelper.SetPictureBoxImage(ImgPreview, null);
-            Hide();
         }
     }
 }

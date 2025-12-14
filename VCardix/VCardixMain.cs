@@ -1,6 +1,6 @@
 ﻿// ======================================================================================================
 // VCardix - vCard, CSV and JSON Contact Manager Software
-// © Copyright 2025, Eray Türkay.
+// © Copyright 2025-2026, Eray Türkay.
 // Project Type: Open Source
 // License: MIT License
 // Website: https://www.turkaysoftware.com/vcardix
@@ -173,7 +173,7 @@ namespace VCardix{
         // MAIN TOOLTIP SETTINGS
         // ======================================================================================================
         private void MainToolTip_Draw(object sender, DrawToolTipEventArgs e){ e.DrawBackground(); e.DrawBorder(); e.DrawText(); }
-        // VCARDIX LOAD
+        // LOAD
         // ====================================================================================================== 
         private void VCardix_Load(object sender, EventArgs e){
             Text = TS_VersionEngine.TS_SofwareVersion(0);
@@ -1262,12 +1262,12 @@ namespace VCardix{
                 Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_donate){ UseShellExecute = true });
             }catch (Exception){ }
         }
-        // VCARDIX ABOUT
+        // ABOUT
         // ======================================================================================================
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e){
             TSToolLauncher<VCardixAbout>("vcardix_about", "header_menu_about", false);
         }
-        // VCARDIX EXIT
+        // EXIT
         // ======================================================================================================
         private void VCardix_FormClosing(object sender, FormClosingEventArgs e){
             if (!save_status){

@@ -224,12 +224,19 @@ namespace VCardix{
                         if (DateTime.TryParse(line.Substring(5).Trim(), out DateTime dt))
                             current.Birthday = dt;
                     }
-                    else if (line.StartsWith("TEL;CELL:", StringComparison.OrdinalIgnoreCase) || line.StartsWith("TEL;TYPE=CELL:", StringComparison.OrdinalIgnoreCase))
-                        current.PhoneMobile = UnescapeTextV21(line.Substring(line.IndexOf(':') + 1).Trim());
-                    else if (line.StartsWith("TEL;HOME:", StringComparison.OrdinalIgnoreCase) || line.StartsWith("TEL;TYPE=HOME:", StringComparison.OrdinalIgnoreCase))
-                        current.PhoneHome = UnescapeTextV21(line.Substring(line.IndexOf(':') + 1).Trim());
-                    else if (line.StartsWith("TEL;WORK:", StringComparison.OrdinalIgnoreCase) || line.StartsWith("TEL;TYPE=WORK:", StringComparison.OrdinalIgnoreCase))
-                        current.PhoneWork = UnescapeTextV21(line.Substring(line.IndexOf(':') + 1).Trim());
+                    if (line.StartsWith("TEL", StringComparison.OrdinalIgnoreCase))
+                    {
+                        int idx = line.IndexOf(':');
+                        string header = (idx > 0 ? line.Substring(0, idx) : line).ToUpperInvariant();
+                        string value = (idx > 0 ? line.Substring(idx + 1).Trim() : "");
+                        value = UnescapeTextV21(value);
+                        if (header.Contains("CELL"))
+                            current.PhoneMobile = value;
+                        else if (header.Contains("HOME"))
+                            current.PhoneHome = value;
+                        else if (header.Contains("WORK"))
+                            current.PhoneWork = value;
+                    }
                     else if (line.StartsWith("EMAIL;", StringComparison.OrdinalIgnoreCase)){
                         var idx = line.IndexOf(':');
                         if (idx >= 0){
@@ -271,22 +278,32 @@ namespace VCardix{
                 }
             }
         }
-        public void SaveVcf(string filePath){
+        public void SaveVcf(string filePath)
+        {
             var sb = new StringBuilder(ContactsList.Count * 512);
-            foreach (var c in ContactsList.OrderBy(c => TSNaturalSortKey(c.FullName ?? "", CultureInfo.CurrentCulture))){
+            foreach (var c in ContactsList.OrderBy(c => TSNaturalSortKey(c.FullName ?? "", CultureInfo.CurrentCulture)))
+            {
                 sb.AppendLine("BEGIN:VCARD");
-                switch (CurrentVersion){
+                switch (CurrentVersion)
+                {
+                    // ==============================
+                    //        VCF 2.1
+                    // ==============================
                     case VCardVersion.V21:
                         sb.AppendLine("VERSION:2.1");
                         sb.AppendLine($"UID:{c.Id}");
                         string EncodeQP(string text) => EncodeQuotedPrintable(text ?? "");
                         string EscapeTextV21(string text) => (text ?? "").Replace("\n", "\\n").Replace(";", "\\;").Replace(",", "\\,");
-                        if (!string.IsNullOrEmpty(c.LastName) || !string.IsNullOrEmpty(c.FirstName) || !string.IsNullOrEmpty(c.MiddleName)){
+                        if (!string.IsNullOrEmpty(c.LastName) || !string.IsNullOrEmpty(c.FirstName) || !string.IsNullOrEmpty(c.MiddleName))
+                        {
                             sb.AppendLine("N;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:" + $"{EncodeQP(c.LastName ?? "")};" + $"{EncodeQP(c.FirstName ?? "")};" + $"{EncodeQP(c.MiddleName ?? "")};;");
                         }
-                        if (!string.IsNullOrEmpty(c.FullName)){
-                            sb.AppendLine("FN;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:" + EncodeQP(c.FullName));
+                        else
+                        {
+                            sb.AppendLine("N:;;;;");
                         }
+                        if (!string.IsNullOrEmpty(c.FullName))
+                            sb.AppendLine("FN;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:" + EncodeQP(c.FullName));
                         if (c.Birthday.HasValue)
                             sb.AppendLine($"BDAY:{c.Birthday.Value:yyyy-MM-dd}");
                         if (!string.IsNullOrEmpty(c.PhoneMobile))
@@ -301,31 +318,37 @@ namespace VCardix{
                             sb.AppendLine($"EMAIL;INTERNET:{EscapeTextV21(c.Email2)}");
                         if (!string.IsNullOrEmpty(c.Email3))
                             sb.AppendLine($"EMAIL;INTERNET:{EscapeTextV21(c.Email3)}");
-                        if (!string.IsNullOrEmpty(c.Address)){
-                            var parts = c.Address.Split(new[] { "||" }, StringSplitOptions.None);
-                            sb.AppendLine(parts.Length == 7 ? $"ADR;TYPE=HOME:{string.Join(";", parts.Select(EscapeTextV21))}" : "ADR;TYPE=HOME:;;;;;;;");
+                        {
+                            var parts = (c.Address?.Split(new[] { "||" }, StringSplitOptions.None) ?? new string[0]).Select(EscapeTextV21).ToList();
+                            while (parts.Count < 7) parts.Add("");
+                            sb.AppendLine($"ADR;TYPE=HOME:{string.Join(";", parts)}");
                         }
                         if (!string.IsNullOrEmpty(c.Organization))
                             sb.AppendLine($"ORG:{EscapeTextV21(c.Organization)}");
                         if (!string.IsNullOrEmpty(c.Website))
-                            sb.AppendLine($"URL:{c.Website}");
+                            sb.AppendLine($"URL:{EscapeTextV21(c.Website)}");
                         if (!string.IsNullOrEmpty(c.Note))
                             sb.AppendLine($"NOTE:{EscapeTextV21(c.Note)}");
                         if (!string.IsNullOrEmpty(c.PhotoBase64))
                             sb.AppendLine($"PHOTO;ENCODING=b;TYPE=PNG:\r\n{TSImageHelper.FoldBase64(c.PhotoBase64)}");
                         break;
-                    case VCardVersion.V30:
-                    case VCardVersion.V40:
+                    // ==============================
+                    //   VCF 3.0 & 4.0
+                    // ==============================
                     default:
                         sb.AppendLine($"VERSION:{(CurrentVersion == VCardVersion.V30 ? "3.0" : "4.0")}");
                         sb.AppendLine($"UID:{c.Id}");
                         string EscapeTextV3V4(string text) => (text ?? "").Replace("\n", "\\n").Replace(";", "\\;").Replace(",", "\\,");
-                        if (!string.IsNullOrEmpty(c.LastName) || !string.IsNullOrEmpty(c.FirstName) || !string.IsNullOrEmpty(c.MiddleName)){
-                            sb.AppendLine($"N:{EscapeTextV3V4(c.LastName)};{EscapeTextV3V4(c.FirstName)};{EscapeTextV3V4(c.MiddleName)};;");
+                        if (!string.IsNullOrEmpty(c.LastName) || !string.IsNullOrEmpty(c.FirstName) || !string.IsNullOrEmpty(c.MiddleName))
+                        {
+                            sb.AppendLine($"N:{EscapeTextV3V4(c.LastName)};" + $"{EscapeTextV3V4(c.FirstName)};" + $"{EscapeTextV3V4(c.MiddleName)};;");
                         }
-                        if (!string.IsNullOrEmpty(c.FullName)){
+                        else
+                        {
+                            sb.AppendLine("N:;;;;");
+                        }
+                        if (!string.IsNullOrEmpty(c.FullName))
                             sb.AppendLine($"FN:{EscapeTextV3V4(c.FullName)}");
-                        }
                         if (c.Birthday.HasValue)
                             sb.AppendLine($"BDAY:{c.Birthday.Value:yyyy-MM-dd}");
                         if (!string.IsNullOrEmpty(c.PhoneMobile))
@@ -340,9 +363,10 @@ namespace VCardix{
                             sb.AppendLine($"EMAIL;TYPE=INTERNET:{EscapeTextV3V4(c.Email2)}");
                         if (!string.IsNullOrEmpty(c.Email3))
                             sb.AppendLine($"EMAIL;TYPE=INTERNET:{EscapeTextV3V4(c.Email3)}");
-                        if (!string.IsNullOrEmpty(c.Address)){
-                            var parts = c.Address.Split(new[] { "||" }, StringSplitOptions.None);
-                            sb.AppendLine(parts.Length == 7 ? $"ADR;TYPE=HOME:{string.Join(";", parts.Select(EscapeTextV3V4))}" : "ADR;TYPE=HOME:;;;;;;;");
+                        {
+                            var parts = (c.Address?.Split(new[] { "||" }, StringSplitOptions.None) ?? new string[0]).Select(EscapeTextV3V4).ToList();
+                            while (parts.Count < 7) parts.Add("");
+                            sb.AppendLine($"ADR;TYPE=HOME:{string.Join(";", parts)}");
                         }
                         if (!string.IsNullOrEmpty(c.Organization))
                             sb.AppendLine($"ORG:{EscapeTextV3V4(c.Organization)}");
@@ -350,10 +374,14 @@ namespace VCardix{
                             sb.AppendLine($"URL:{EscapeTextV3V4(c.Website)}");
                         if (!string.IsNullOrEmpty(c.Note))
                             sb.AppendLine($"NOTE:{EscapeTextV3V4(c.Note)}");
-                        if (!string.IsNullOrEmpty(c.PhotoBase64)){
-                            if (CurrentVersion == VCardVersion.V30){
+                        if (!string.IsNullOrEmpty(c.PhotoBase64))
+                        {
+                            if (CurrentVersion == VCardVersion.V30)
+                            {
                                 sb.AppendLine($"PHOTO;ENCODING=b;TYPE=PNG:\r\n{TSImageHelper.FoldBase64(c.PhotoBase64)}");
-                            }else if (CurrentVersion == VCardVersion.V40){
+                            }
+                            else // V40
+                            {
                                 sb.AppendLine($"PHOTO:data:image/png;base64,{TSImageHelper.FoldBase64(c.PhotoBase64)}");
                             }
                         }
@@ -523,9 +551,7 @@ namespace VCardix{
         public IEnumerable<PrefixModule> SearchContacts(string keyword){
             if (string.IsNullOrWhiteSpace(keyword))
                 return ContactsList;
-            return ContactsList
-                .AsParallel()
-                .Where(c =>
+            return ContactsList.AsParallel().Where(c =>
                     c.GetType().GetProperties().Where(p => p.PropertyType == typeof(string)).Select(p => p.GetValue(c) as string)
                      .Any(value => !string.IsNullOrEmpty(value) && value.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
                 ).ToList();
@@ -537,10 +563,8 @@ namespace VCardix{
         // IMAGE SET AND DISPOSE - IMAGE DYNAMIC DPI & DYNAMIC RESIZER
         // =========================
         public static void SetPictureBoxImage(PictureBox pictureBox, Image newImage){
-            if (pictureBox.Image != null){
-                pictureBox.Image.Dispose();
-                pictureBox.Image = null;
-            }
+            pictureBox.Image?.Dispose();
+            pictureBox.Image = null;
             if (newImage == null){
                 pictureBox.Image = null;
                 return;

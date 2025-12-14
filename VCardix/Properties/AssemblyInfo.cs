@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Türkay Software")]
 [assembly: AssemblyProduct("VCardix")]
-[assembly: AssemblyCopyright("© 2025, Eray Türkay.")]
+[assembly: AssemblyCopyright("© 2025-2026, Eray Türkay.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -30,6 +30,6 @@ using System.Runtime.InteropServices;
 //      Yapı Numarası
 //      Düzeltme
 //
-[assembly: AssemblyVersion("25.13.0.0")]
-[assembly: AssemblyFileVersion("25.13.0.0")]
+[assembly: AssemblyVersion("25.14.0.0")]
+[assembly: AssemblyFileVersion("25.14.0.0")]
 [assembly: NeutralResourcesLanguage("tr-TR")]
