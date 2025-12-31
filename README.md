@@ -41,8 +41,6 @@ With these instructions, you can download and use the correct version of VCardix
 - Advanced interface features such as Light / Dark / System Theme.
 - [TS Wizard](https://www.turkaysoftware.com/ts-wizard) provides an automatic update and monitoring system.
 
-<img width="396" height="335" alt="VCardix - Advanced Features" src="https://github.com/user-attachments/assets/1493f573-f71d-482c-a075-e60fdd4f1fea" />
-
 # System Requirements
 
 |  | Minimum Requirements | Recommended Requirements |
@@ -50,29 +48,3 @@ With these instructions, you can download and use the correct version of VCardix
 | OS: | Windows 10 x64 | Windows 10 22H2 x64|
 | RAM: | 50 MB Free RAM | 150 MB Free RAM |
 | .NET: | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
-
-# Shortcut Key Layouts
-
-| Main Features | Key |
-| -- | :--: |
-| **Import File** | CTRL + N |
-| **Export File** | CTRL + S |
-| **VCard Version:** 2.1 | CTRL + 2 |
-| **VCard Version:** 3.0 | CTRL + 3 |
-| **VCard Version:** 4.0 | CTRL + 4 |
-| **Sorting Mode:** Full Name | CTRL + Shift + 1 |
-| **Sorting Mode:** First Name | CTRL + Shift + 2 |
-| **Sorting Mode:** Last Name | CTRL + Shift + 3 |
-| **Sorting Mode:** Mobile Phone | CTRL + Shift + 4 |
-| **Theme:** Light | F1 |
-| **Theme:** Dark | F2 |
-| **Theme:** System | F3 |
-| **Start:** Windowed | F4 |
-| **Start:** Full Screen | F5 |
-
-| Extras | Key |
-| -- | :--: |
-| **Check Update** | F11 |
-| **About** | F12 |
-| **TS Wizard** | CTRL + Shift + S |
-| **Donate** | CTRL + Shift + D |
