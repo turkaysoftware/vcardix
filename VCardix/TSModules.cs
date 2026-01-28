@@ -89,28 +89,26 @@ namespace VCardix{
                 { 10, new KeyValuePair<MessageBoxButtons, MessageBoxIcon>(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) }  // Yes/No/Cancel and Info
             };
             public static DialogResult TS_MessageBox(Form m_form, int m_mode, string m_message, string m_title = ""){
-                if (m_form.InvokeRequired){
-                    m_form.Invoke((Action)(() => BringFormToFront(m_form)));
-                }else{
+                if (m_form != null && m_form.InvokeRequired){
+                    return (DialogResult)m_form.Invoke(new Func<DialogResult>(() => TS_MessageBox(m_form, m_mode, m_message, m_title)));
+                }
+                if (m_form != null){
                     BringFormToFront(m_form);
                 }
-                //
                 string m_box_title = string.IsNullOrEmpty(m_title) ? Application.ProductName : m_title;
-                //
                 MessageBoxButtons m_button = MessageBoxButtons.OK;
                 MessageBoxIcon m_icon = MessageBoxIcon.Information;
-                //
                 if (TSMessageBoxConfig.ContainsKey(m_mode)){
                     var m_serialize = TSMessageBoxConfig[m_mode];
                     m_button = m_serialize.Key;
                     m_icon = m_serialize.Value;
                 }
-                //
                 return MessageBox.Show(m_form, m_message, m_box_title, m_button, m_icon);
             }
             private static void BringFormToFront(Form m_form){
-                if (m_form.WindowState == FormWindowState.Minimized)
+                if (m_form.WindowState == FormWindowState.Minimized){
                     m_form.WindowState = FormWindowState.Normal;
+                }
                 m_form.BringToFront();
                 m_form.Activate();
             }
@@ -204,6 +202,7 @@ namespace VCardix{
         public static readonly string ts_lang_ar = ts_lf + @"\Arabic.ini";              // Arabic       | ar
         public static readonly string ts_lang_zh = ts_lf + @"\Chinese.ini";             // Chinese      | zh
         public static readonly string ts_lang_en = ts_lf + @"\English.ini";             // English      | en
+        public static readonly string ts_lang_nl = ts_lf + @"\Dutch.ini";               // Nederlands   | nl
         public static readonly string ts_lang_fr = ts_lf + @"\French.ini";              // French       | fr
         public static readonly string ts_lang_de = ts_lf + @"\German.ini";              // German       | de
         public static readonly string ts_lang_hi = ts_lf + @"\Hindi.ini";               // Hindi        | hi
@@ -221,6 +220,7 @@ namespace VCardix{
             { "ar", ts_lang_ar },
             { "zh", ts_lang_zh },
             { "en", ts_lang_en },
+            { "nl", ts_lang_nl },
             { "fr", ts_lang_fr },
             { "de", ts_lang_de },
             { "hi", ts_lang_hi },
@@ -508,13 +508,17 @@ namespace VCardix{
         // ======================================================================================================
         public static bool IsNetworkCheck(){
             try{
-                HttpWebRequest server_request = (HttpWebRequest)WebRequest.Create("http://clients3.google.com/generate_204");
-                server_request.KeepAlive = false;
-                server_request.Timeout = 2500;
-                using (var server_response = (HttpWebResponse)server_request.GetResponse()){
-                    return server_response.StatusCode == HttpStatusCode.NoContent;
+                var check_net = (HttpWebRequest)WebRequest.Create("http://clients3.google.com/generate_204");
+                check_net.Method = "GET";
+                check_net.KeepAlive = false;
+                check_net.Proxy = null;
+                check_net.Timeout = 2500;
+                check_net.ReadWriteTimeout = 2500;
+                check_net.AllowAutoRedirect = false;
+                using (var resp_net = (HttpWebResponse)check_net.GetResponse()){
+                    return resp_net.StatusCode == HttpStatusCode.NoContent;
                 }
-            }catch{
+            }catch (WebException){
                 return false;
             }
         }
