@@ -37,7 +37,7 @@ With these instructions, you can download and use the correct version of VCardix
 
 # Advanced Features
 - **Multi-Architecture Support:** Fully compatible with x64-x86 and ARM processors.
-- **Multi-Language System:** Fully supports 14 or more languages. **Supported Languages:** _Arabic, Chinese, English, French, German, Hindi, Italian, Japanase, Korean, Polish, Portuguese, Russian, Spanish, Turkish_ | **For translation support: [Translation Guide for VCardix](https://github.com/turkaysoftware/vcardix/discussions/1)**
+- **Multi-Language System:** Fully supports 15 or more languages. **Supported Languages:** _Arabic, Chinese, English, Dutch, French, German, Hindi, Italian, Japanase, Korean, Polish, Portuguese, Russian, Spanish, Turkish_ | **For translation support: [Translation Guide for VCardix](https://github.com/turkaysoftware/vcardix/discussions/1)**
 - Advanced interface features such as Light / Dark / System Theme.
 - [TS Wizard](https://www.turkaysoftware.com/ts-wizard) provides an automatic update and monitoring system.
 
@@ -46,5 +46,5 @@ With these instructions, you can download and use the correct version of VCardix
 |  | Minimum Requirements | Recommended Requirements |
 | -- | :--: | :--: |
 | OS: | Windows 10 x64 | Windows 10 22H2 x64|
-| RAM: | 50 MB Free RAM | 150 MB Free RAM |
+| RAM: | 50 MB Free RAM | 100 MB Free RAM |
 | .NET: | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
