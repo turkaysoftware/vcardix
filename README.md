@@ -1,9 +1,10 @@
 # 📇 VCardix | Advanced vCard, CSV and JSON Contact Manager
 
-![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/vcardix?style=for-the-badge&color=gold)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/vcardix?style=for-the-badge&color=blue)
-![GitHub license](https://img.shields.io/github/license/turkaysoftware/vcardix?style=for-the-badge)
-![Platform](https://img.shields.io/badge/platform-Windows-0078D4?style=for-the-badge&logo=windows)
+![GitHub all releases](https://img.shields.io/github/downloads/turkaysoftware/vcardix/total?style=for-the-badge&color=DF313F)
+![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/vcardix?style=for-the-badge&color=167C33)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/vcardix?style=for-the-badge&color=9A194C)
+![Platform](https://img.shields.io/badge/platform-Windows-366194?style=for-the-badge&logo=windows)
+![GitHub license](https://img.shields.io/github/license/turkaysoftware/vcardix?style=for-the-badge&color=17796E)
 
 **VCardix** is a high-performance **contact management and editing software** developed by **Eray Türkay**. Designed with a modern algorithm that ranks it among the best in its class, VCardix allows you to manage, edit, and convert your digital contacts across vCard, CSV, and JSON formats with surgical precision. It is the ultimate tool for users who need a fast and reliable way to handle complex contact data.
 
@@ -12,7 +13,7 @@
 ### ☕ Support the Project
 VCardix is free and will always be. If you find it useful, consider supporting the development!
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-DF313F?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
 [Official Website](https://www.turkaysoftware.com/vcardix) | [Report a Bug](https://github.com/turkaysoftware/vcardix/issues)
 
