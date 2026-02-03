@@ -10,7 +10,7 @@
 ---
 
 ### ☕ Support the Project
-VCardix is completely free to use. If you find it valuable for managing your digital life, consider supporting the project!
+VCardix is free and will always be. If you find it useful, consider supporting the development!
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
@@ -49,7 +49,6 @@ VCardix provides a versatile environment for professional contact management:
 ## 📸 Interface Preview
 
 ![VCardix UI](https://github.com/user-attachments/assets/8480b394-d467-412e-a29c-877420064487)
-> *Manage your contacts with precision using VCardix's modern and intuitive dashboard.*
 
 ---
 
@@ -67,21 +66,21 @@ VCardix provides a versatile environment for professional contact management:
 
 1.  Navigate to the **[Releases](https://github.com/turkaysoftware/vcardix/releases/latest)** page.
 2.  Download the latest ZIP file.
-3.  **Extract all files from the ZIP** (Important: The application requires all folder contents to run correctly).
+3.  **Extract all files from the ZIP** (Important: Application requires all folder contents to run correctly).
 4.  Launch the executable corresponding to your architecture:
-    * `VCardix_x64.exe`: For standard 64-bit systems.
-    * `VCardix_arm64.exe`: For ARM-based Windows devices.
+    * `VCardix_x64.exe`: For standard 64-bit Intel/AMD systems.
+    * `VCardix_arm64.exe`: For ARM-based devices like Surface Pro.
 
 ---
 
-## 🛡️ Security & Integrity
+## 🛡️ Security
 
-* **Zero Export Policy:** Your privacy is the priority; no contact data is ever sent to external servers.
-* **Pure Build:** Built from the ground up to eliminate risks associated with third-party library vulnerabilities.
-* **Transparent Development:** Open-source code available for audit and community contribution.
+* **Zero Data Export Policy:** Your privacy is our priority; no data leaves your machine.
+* **No Dependencies:** Developed entirely from scratch using its own source code, there are no risks from security vulnerabilities in third-party libraries.
+* **Open Source:** All source code for the program is open and can be reviewed by anyone.
 
 ---
 
 ## 📄 License
 
-This software is provided for free as part of the Türkay Software utility suite.
+This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoftware/vcardix?tab=MIT-1-ov-file).
