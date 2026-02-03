@@ -36,8 +36,13 @@ VCardix provides a versatile environment for professional contact management:
 * **Universal Format Support:** Seamlessly edit and manage **vCard, CSV, and JSON** contact files.
 * **Modern Algorithm:** High-speed data processing for handling large contact lists without lag.
 * **Cross-Architecture Support:** Native compatibility for both **x64** and **ARM64** processor architectures.
-* **TS Wizard Integration:** Seamlessly works with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
-* **Localization Support:** Community-driven translation via the official [Translation Guide](https://github.com/turkaysoftware/vcardix/discussions/1).
+
+---
+
+## 🛠️ Automatic Updates and Translation Support
+
+* **TS Wizard Integration:** Fully compatible with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
+* **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/vcardix/discussions/1).
 
 ---
 
