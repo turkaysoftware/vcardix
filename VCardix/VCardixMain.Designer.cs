@@ -34,7 +34,7 @@
             this.BtnAdd = new VCardix.TSCustomButton();
             this.BtnDelete = new VCardix.TSCustomButton();
             this.BtnUpdate = new VCardix.TSCustomButton();
-            this.ContactList = new System.Windows.Forms.ListBox();
+            this.ContactList = new VCardix.TSCustomListBox();
             this.UIPanel = new System.Windows.Forms.Panel();
             this.BtnOpenAdressWindow = new VCardix.TSCustomButton();
             this.dateTimePickerBirthday = new VCardix.TSCustomDateTimePicker();
@@ -91,6 +91,7 @@
             this.arabicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chineseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dutchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frenchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.germanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hindiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +116,6 @@
             this.cxViewImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cxSaveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cxRemoveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dutchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BackPanel.SuspendLayout();
             this.UIPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ContactUserImage)).BeginInit();
@@ -233,12 +233,15 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ContactList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ContactList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ContactList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.ContactList.Font = new System.Drawing.Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Bold);
             this.ContactList.FormattingEnabled = true;
             this.ContactList.IntegralHeight = false;
-            this.ContactList.ItemHeight = 17;
+            this.ContactList.ItemHeight = 22;
             this.ContactList.Location = new System.Drawing.Point(10, 67);
             this.ContactList.Name = "ContactList";
+            this.ContactList.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.ContactList.SelectedForeColor = System.Drawing.Color.White;
             this.ContactList.Size = new System.Drawing.Size(281, 334);
             this.ContactList.TabIndex = 2;
             this.ContactList.SelectedIndexChanged += new System.EventHandler(this.ContactList_SelectedIndexChanged);
@@ -311,7 +314,7 @@
             // dateTimePickerBirthday
             // 
             this.dateTimePickerBirthday.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.dateTimePickerBirthday.ButtonColor = System.Drawing.SystemColors.ControlDark;
+            this.dateTimePickerBirthday.ButtonColor = System.Drawing.SystemColors.ButtonShadow;
             this.dateTimePickerBirthday.CalendarForeColor = System.Drawing.SystemColors.WindowText;
             this.dateTimePickerBirthday.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePickerBirthday.DisabledBackColor = System.Drawing.SystemColors.Control;
@@ -859,7 +862,7 @@
             this.darkThemeToolStripMenuItem,
             this.systemThemeToolStripMenuItem});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // lightThemeToolStripMenuItem
@@ -905,91 +908,97 @@
             this.spanishToolStripMenuItem,
             this.turkishToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.languageToolStripMenuItem.Text = "Language";
             // 
             // arabicToolStripMenuItem
             // 
             this.arabicToolStripMenuItem.Name = "arabicToolStripMenuItem";
-            this.arabicToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.arabicToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.arabicToolStripMenuItem.Text = "Arabic";
             // 
             // chineseToolStripMenuItem
             // 
             this.chineseToolStripMenuItem.Name = "chineseToolStripMenuItem";
-            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.chineseToolStripMenuItem.Text = "Chinese";
             // 
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.englishToolStripMenuItem.Text = "English";
+            // 
+            // dutchToolStripMenuItem
+            // 
+            this.dutchToolStripMenuItem.Name = "dutchToolStripMenuItem";
+            this.dutchToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.dutchToolStripMenuItem.Text = "Dutch";
             // 
             // frenchToolStripMenuItem
             // 
             this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
-            this.frenchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.frenchToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.frenchToolStripMenuItem.Text = "French";
             // 
             // germanToolStripMenuItem
             // 
             this.germanToolStripMenuItem.Name = "germanToolStripMenuItem";
-            this.germanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.germanToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.germanToolStripMenuItem.Text = "German";
             // 
             // hindiToolStripMenuItem
             // 
             this.hindiToolStripMenuItem.Name = "hindiToolStripMenuItem";
-            this.hindiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hindiToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.hindiToolStripMenuItem.Text = "Hindi";
             // 
             // italianToolStripMenuItem
             // 
             this.italianToolStripMenuItem.Name = "italianToolStripMenuItem";
-            this.italianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.italianToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.italianToolStripMenuItem.Text = "Italian";
             // 
             // japaneseToolStripMenuItem
             // 
             this.japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
-            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.japaneseToolStripMenuItem.Text = "Japanese";
             // 
             // koreanToolStripMenuItem
             // 
             this.koreanToolStripMenuItem.Name = "koreanToolStripMenuItem";
-            this.koreanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.koreanToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.koreanToolStripMenuItem.Text = "Korean";
             // 
             // polishToolStripMenuItem
             // 
             this.polishToolStripMenuItem.Name = "polishToolStripMenuItem";
-            this.polishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.polishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.polishToolStripMenuItem.Text = "Polish";
             // 
             // portugueseToolStripMenuItem
             // 
             this.portugueseToolStripMenuItem.Name = "portugueseToolStripMenuItem";
-            this.portugueseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.portugueseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.portugueseToolStripMenuItem.Text = "Portuguese";
             // 
             // russianToolStripMenuItem
             // 
             this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
-            this.russianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.russianToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.russianToolStripMenuItem.Text = "Russian";
             // 
             // spanishToolStripMenuItem
             // 
             this.spanishToolStripMenuItem.Name = "spanishToolStripMenuItem";
-            this.spanishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.spanishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.spanishToolStripMenuItem.Text = "Spanish";
             // 
             // turkishToolStripMenuItem
             // 
             this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
-            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.turkishToolStripMenuItem.Text = "Turkish";
             // 
             // startupToolStripMenuItem
@@ -998,7 +1007,7 @@
             this.windowedToolStripMenuItem,
             this.fullScreenToolStripMenuItem});
             this.startupToolStripMenuItem.Name = "startupToolStripMenuItem";
-            this.startupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startupToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.startupToolStripMenuItem.Text = "Startup";
             // 
             // windowedToolStripMenuItem
@@ -1021,7 +1030,7 @@
             // 
             this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
             this.checkForUpdateToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.checkForUpdateToolStripMenuItem.Text = "checkupdate";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.CheckForUpdateToolStripMenuItem_Click);
             // 
@@ -1096,12 +1105,6 @@
             this.cxRemoveImageToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.cxRemoveImageToolStripMenuItem.Text = "CxRemoveImage";
             this.cxRemoveImageToolStripMenuItem.Click += new System.EventHandler(this.CxRemoveImageToolStripMenuItem_Click);
-            // 
-            // dutchToolStripMenuItem
-            // 
-            this.dutchToolStripMenuItem.Name = "dutchToolStripMenuItem";
-            this.dutchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dutchToolStripMenuItem.Text = "Dutch";
             // 
             // VCardixMain
             // 
@@ -1201,7 +1204,7 @@
         private System.Windows.Forms.ToolStripMenuItem sortingFirstNameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sortingPhoneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cxSaveImageToolStripMenuItem;
-        private System.Windows.Forms.ListBox ContactList;
+        private TSCustomListBox ContactList;
         private System.Windows.Forms.PictureBox ContactUserImage;
         private TSCustomDateTimePicker dateTimePickerBirthday;
         private TSCustomButton BtnUpdate;

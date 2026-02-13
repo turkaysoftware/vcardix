@@ -55,6 +55,19 @@ namespace VCardix{
             public Image PhotoImage{ get { return TSImageHelper.ImageFromBase64(PhotoBase64); } }
             // IMAGE CLEAR
             public void ClearPhoto(){ PhotoBase64 = null; }
+
+            public string CurrentDisplayMember { get; set; } = "FullName";
+            public override string ToString()
+            {
+                // Reflection kullanarak seçili özelliği döndürüyoruz
+                // Bu sayede DisplayMember ne olursa olsun ToString ona uyum sağlar
+                var prop = this.GetType().GetProperty(CurrentDisplayMember);
+                if (prop != null)
+                {
+                    return prop.GetValue(this)?.ToString() ?? "";
+                }
+                return FullName; // Fallback
+            }
         }
         // ADD DATA
         // ======================================================================================================

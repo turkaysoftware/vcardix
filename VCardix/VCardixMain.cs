@@ -35,7 +35,6 @@ namespace VCardix{
         public VCardixMain(){
             InitializeComponent();
             VCardManager.CurrentVersion = VCardVersionChanger(VCardVersion.V30);
-            ContactList.DisplayMember = "FullName";
             // LANGUAGE SET TAGS
             // ==================
             arabicToolStripMenuItem.Tag = "ar";
@@ -132,7 +131,6 @@ namespace VCardix{
         // ======================================================================================================
         private void RunSoftwareEngine(){
             // DOUBLE BUFFER TABLE
-            typeof(ListBox).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, ContactList, new object[] { true });
             // THEME - LANG - STARTUP MODE PRELOADER
             // ======================================================================================================
             TSSettingsSave software_read_settings = new TSSettingsSave(ts_sf);
@@ -538,11 +536,13 @@ namespace VCardix{
         private void RefreshContactList(string displayMember, Func<PrefixModule, string> orderBySelector){
             var selectedContact = ContactList.SelectedItem as PrefixModule;
             Guid? selectedId = selectedContact?.Id;
-            //
-            ContactList.DisplayMember = displayMember;
+            var sortedItems = VCardManager.ContactsList.OrderBy(c => TSNaturalSortKey(orderBySelector(c), CultureInfo.CurrentCulture)).ToList();
+            foreach (var contact in sortedItems){
+                contact.CurrentDisplayMember = displayMember;
+            }
+            ContactList.BeginUpdate();
             ContactList.Items.Clear();
-            //
-            ContactList.Items.AddRange(VCardManager.ContactsList.OrderBy(c => TSNaturalSortKey(orderBySelector(c), CultureInfo.CurrentCulture)).ToArray());
+            ContactList.Items.AddRange(sortedItems.ToArray());
             if (selectedId.HasValue){
                 for (int i = 0; i < ContactList.Items.Count; i++){
                     if (((PrefixModule)ContactList.Items[i]).Id == selectedId.Value){
@@ -551,6 +551,7 @@ namespace VCardix{
                     }
                 }
             }
+            ContactList.EndUpdate();
         }
         private void UpdateSortringMenuChecks(ToolStripMenuItem selectedItem){
             sortingFullNameToolStripMenuItem.Checked = false;
@@ -880,6 +881,8 @@ namespace VCardix{
                 //
                 ContactList.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor");
                 ContactList.ForeColor = TS_ThemeEngine.ColorMode(theme, "AccentColorText");
+                ContactList.SelectedBackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
+                ContactList.SelectedForeColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor");
                 //
                 var combinedBtnsControls = BackPanel.Controls.Cast<Control>().Concat(UIPanel.Controls.Cast<Control>());
                 foreach (Control ui_controls in combinedBtnsControls){
@@ -906,7 +909,7 @@ namespace VCardix{
                 UIPanel.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor");
                 //
                 dateTimePickerBirthday.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
-                dateTimePickerBirthday.ButtonColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
+                dateTimePickerBirthday.ButtonColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor");
                 dateTimePickerBirthday.ForeColor = TS_ThemeEngine.ColorMode(theme, "AccentColorText");
                 dateTimePickerBirthday.BorderColor = TS_ThemeEngine.ColorMode(theme, "BorderColor");
                 dateTimePickerBirthday.FocusedBorderColor = TS_ThemeEngine.ColorMode(theme, "BorderColor");
