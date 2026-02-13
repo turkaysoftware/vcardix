@@ -49,7 +49,7 @@ VCardix provides a versatile environment for professional contact management:
 
 ## 📸 Interface Preview
 
-![VCardix UI](https://github.com/user-attachments/assets/8480b394-d467-412e-a29c-877420064487)
+<img width="1010" height="633" alt="VCardix UI" src="https://github.com/user-attachments/assets/f6b9b52d-d4ab-4970-8ec7-97436508ea1d" />
 
 ---
 
