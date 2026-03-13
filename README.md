@@ -1,4 +1,4 @@
-# 📇 VCardix | Advanced vCard, CSV and JSON Contact Manager
+# 📇 VCardix - Advanced vCard, CSV and JSON Contact Manager
 
 ![GitHub all releases](https://img.shields.io/github/downloads/turkaysoftware/vcardix/total?style=for-the-badge&color=DF313F)
 ![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/vcardix?style=for-the-badge&color=167C33)
