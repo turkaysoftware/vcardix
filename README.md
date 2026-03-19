@@ -4,14 +4,13 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/vcardix?style=for-the-badge&color=167C33)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/vcardix?style=for-the-badge&color=9A194C)
 ![Platform](https://img.shields.io/badge/platform-Windows-366194?style=for-the-badge&logo=windows)
-![GitHub license](https://img.shields.io/github/license/turkaysoftware/vcardix?style=for-the-badge&color=17796E)
 
 **VCardix** is a high-performance **contact management and editing software** developed by **Eray Türkay**. Designed with a modern algorithm that ranks it among the best in its class, VCardix allows you to manage, edit, and convert your digital contacts across vCard, CSV, and JSON formats with surgical precision. It is the ultimate tool for users who need a fast and reliable way to handle complex contact data.
 
 ---
 
-### ☕ Support the Project
-VCardix is free and will always be. If you find it useful, consider supporting the development!
+### Donate
+You can support this project by making a donation to help ensure its sustainability and the development of new features.
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-DF313F?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
@@ -19,18 +18,18 @@ VCardix is free and will always be. If you find it useful, consider supporting t
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-* 🛡️ **Privacy First:** No data ever leaves your computer. Your sensitive contact information is processed entirely locally.
-* 🚀 **Pure Performance:** Developed exclusively in **C# and .NET Framework** with **zero external libraries** for a lightweight and fast experience.
-* 🌓 **Modern UI:** Clean, intuitive interface compatible with Windows 11 design language, featuring Light, Dark, and System themes.
-* 🌍 **Multilingual:** Fully supports 15+ languages including Arabic, Chinese, English, Turkish, and more.
-* 📦 **Portable:** No installation required. Simply extract the ZIP and manage your contacts anywhere.
-* 🆓 **Truly Free:** High-end management features provided at no cost, with no hidden fees or paywalls.
+* **Privacy First:** No data ever leaves your computer. Your sensitive contact information is processed entirely locally.
+* **Pure Performance:** Developed exclusively in **C# and .NET Framework** with **zero external libraries** for a lightweight and fast experience.
+* **Modern UI:** Clean, intuitive interface compatible with Windows 11 design language, featuring Light, Dark, and System themes.
+* **Multilingual:** Fully supports 15+ languages including Arabic, Chinese, English, Turkish, and more.
+* **Portable:** No installation required. Simply extract the ZIP and manage your contacts anywhere.
+* **Truly Free:** High-end management features provided at no cost, with no hidden fees or paywalls.
 
 ---
 
-## 🛠️ Advanced Capabilities
+## Advanced Capabilities
 
 VCardix provides a versatile environment for professional contact management:
 
@@ -40,20 +39,20 @@ VCardix provides a versatile environment for professional contact management:
 
 ---
 
-## 🛠️ Automatic Updates and Translation Support
+## Automatic Updates and Translation Support
 
 * **TS Wizard Integration:** Fully compatible with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
 * **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/vcardix/discussions/1).
 
 ---
 
-## 📸 Interface Preview
+## Interface Preview
 
 <img width="1010" height="633" alt="VCardix UI" src="https://github.com/user-attachments/assets/6576c09a-3be0-4b26-8b8e-2e71fe8b0e6d" />
 
 ---
 
-## 💻 System Requirements
+## System Requirements
 
 | Feature | Minimum Requirements | Recommended Requirements |
 | :--- | :--- | :--- |
@@ -63,7 +62,7 @@ VCardix provides a versatile environment for professional contact management:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 1.  Navigate to the **[Releases](https://github.com/turkaysoftware/vcardix/releases/latest)** page.
 2.  Download the latest ZIP file.
@@ -74,7 +73,7 @@ VCardix provides a versatile environment for professional contact management:
 
 ---
 
-## 🛡️ Security
+## Security
 
 * **Zero Data Export Policy:** Your privacy is our priority; no data leaves your machine.
 * **No Dependencies:** Developed entirely from scratch using its own source code, there are no risks from security vulnerabilities in third-party libraries.
@@ -82,6 +81,6 @@ VCardix provides a versatile environment for professional contact management:
 
 ---
 
-## 📄 License
+## License
 
 This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoftware/vcardix?tab=MIT-1-ov-file).
