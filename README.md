@@ -1,9 +1,9 @@
 # VCardix - Advanced vCard, CSV and JSON Contact Manager Software
 
-[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/vcardix/total?style=flat&color=1a893c)](https://github.com/turkaysoftware/vcardix/releases)
-[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/vcardix?style=flat&color=0062cc)](https://github.com/turkaysoftware/vcardix/stargazers)
-[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/vcardix?style=flat&color=5a32a3)](https://github.com/turkaysoftware/vcardix/releases/latest)
-[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat)](https://github.com/turkaysoftware/vcardix)
+[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/vcardix/total?style=flat&color=1a893c&label=Downloads)](https://github.com/turkaysoftware/vcardix/releases)
+[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/vcardix?style=flat&color=0062cc&label=Stars)](https://github.com/turkaysoftware/vcardix/stargazers)
+[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/vcardix?style=flat&color=5a32a3&label=Latest%20Release)](https://github.com/turkaysoftware/vcardix/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat&label=Platform)](https://github.com/turkaysoftware/vcardix)
 
 **VCardix** is a high-performance **contact management and editing software** developed by **Eray Türkay**. Designed with a modern algorithm that ranks it among the best in its class, VCardix allows you to manage, edit, and convert your digital contacts across vCard, CSV, and JSON formats with surgical precision. It is the ultimate tool for users who need a fast and reliable way to handle complex contact data.
 
