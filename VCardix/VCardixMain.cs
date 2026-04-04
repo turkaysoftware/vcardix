@@ -11,12 +11,10 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -215,7 +213,7 @@ namespace VCardix{
         private void RefreshList(){
             CleanUI();
             ContactList.Items.Clear();
-            ContactList.Items.AddRange(VCardManager.ContactsList.OrderBy(c => TSNaturalSortKey(c.FullName ?? string.Empty, CultureInfo.CurrentCulture)).ToArray());
+            ContactList.Items.AddRange(VCardManager.ContactsList.OrderBy(c => TSNaturalSortKey(c.FullName ?? string.Empty)).ToArray());
             TSGetLangs software_lang = new TSGetLangs(lang_path);
             if (ContactList.Items.Count > 0){
                 BottomInfoLabel.Text = string.Format(software_lang.TSReadLangs("VCardixUI", "vcui_bottom_ready"), ContactList.Items.Count.ToString());
@@ -474,7 +472,7 @@ namespace VCardix{
             try{
                 var results = VCardManager.SearchContacts(textBoxSearch.Text.Trim());
                 ContactList.Items.Clear();
-                ContactList.Items.AddRange(results.OrderBy(c => TSNaturalSortKey(c.FullName, CultureInfo.CurrentCulture)).ToArray());
+                ContactList.Items.AddRange(results.OrderBy(c => TSNaturalSortKey(c.FullName)).ToArray());
             }catch (Exception){ }
         }
         // vCARD VERSION CHANGER
@@ -537,7 +535,7 @@ namespace VCardix{
         private void RefreshContactList(string displayMember, Func<PrefixModule, string> orderBySelector){
             var selectedContact = ContactList.SelectedItem as PrefixModule;
             Guid? selectedId = selectedContact?.Id;
-            var sortedItems = VCardManager.ContactsList.OrderBy(c => TSNaturalSortKey(orderBySelector(c), CultureInfo.CurrentCulture)).ToList();
+            var sortedItems = VCardManager.ContactsList.OrderBy(c => TSNaturalSortKey(orderBySelector(c))).ToList();
             foreach (var contact in sortedItems){
                 contact.CurrentDisplayMember = displayMember;
             }

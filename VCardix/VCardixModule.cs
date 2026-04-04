@@ -294,7 +294,7 @@ namespace VCardix{
         public void SaveVcf(string filePath)
         {
             var sb = new StringBuilder(ContactsList.Count * 512);
-            foreach (var c in ContactsList.OrderBy(c => TSNaturalSortKey(c.FullName ?? "", CultureInfo.CurrentCulture)))
+            foreach (var c in ContactsList.OrderBy(c => TSNaturalSortKey(c.FullName ?? "")))
             {
                 sb.AppendLine("BEGIN:VCARD");
                 switch (CurrentVersion)
@@ -477,7 +477,7 @@ namespace VCardix{
         public void SaveCsv(string filePath){
             using (var sw = new StreamWriter(filePath, false, Encoding.UTF8)){
                 sw.WriteLine("Id,FirstName,MiddleName,LastName,Birthday,PhoneMobile,PhoneHome,PhoneWork,Email1,Email2,Email3,Address,Organization,Website,Note,PhotoBase64");
-                foreach (var c in ContactsList.OrderBy(c => TSNaturalSortKey(c.FullName ?? "", CultureInfo.CurrentCulture))){
+                foreach (var c in ContactsList.OrderBy(c => TSNaturalSortKey(c.FullName ?? ""))){
                     var line = string.Join(",",
                         EscapeCsv(c.Id.ToString()),
                         EscapeCsv(c.FirstName),
@@ -555,7 +555,7 @@ namespace VCardix{
         }
         public void SaveJson(string filePath){
             var serializer = new JavaScriptSerializer{ MaxJsonLength = Int32.MaxValue };
-            var orderedContacts = ContactsList.OrderBy(c => TSNaturalSortKey(c.FullName ?? "", CultureInfo.CurrentCulture)).ToList();
+            var orderedContacts = ContactsList.OrderBy(c => TSNaturalSortKey(c.FullName ?? "")).ToList();
             string json = serializer.Serialize(orderedContacts);
             File.WriteAllText(filePath, json, Encoding.UTF8);
         }
