@@ -27,6 +27,12 @@ You can support this project by making a donation to help ensure its sustainabil
 
 ---
 
+## Interface Preview
+
+<img width="1010" height="633" alt="VCardix UI" src="https://github.com/user-attachments/assets/0309ef1a-496a-48e7-91dc-23b2e8eb2773" />
+
+---
+
 ## Advanced Capabilities
 
 VCardix provides a versatile environment for professional contact management:
@@ -37,16 +43,9 @@ VCardix provides a versatile environment for professional contact management:
 
 ---
 
-## Automatic Updates and Translation Support
+## Translation Support
 
-* **TS Wizard Integration:** Fully compatible with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
 * **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/vcardix/discussions/1).
-
----
-
-## Interface Preview
-
-<img width="1010" height="633" alt="VCardix UI" src="https://github.com/user-attachments/assets/0309ef1a-496a-48e7-91dc-23b2e8eb2773" />
 
 ---
 
