@@ -1,9 +1,9 @@
 # VCardix - Advanced vCard, CSV and JSON Contact Manager Software
 
-[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/vcardix/total?style=flat&color=1a893c&label=Downloads)](https://github.com/turkaysoftware/vcardix/releases)
-[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/vcardix?style=flat&color=0062cc&label=Stars)](https://github.com/turkaysoftware/vcardix/stargazers)
-[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/vcardix?style=flat&color=5a32a3&label=Latest%20Release)](https://github.com/turkaysoftware/vcardix/releases/latest)
-[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat&label=Platform)](https://github.com/turkaysoftware/vcardix)
+[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoft/vcardix/total?style=flat&color=1a893c&label=Downloads)](https://github.com/turkaysoft/vcardix/releases)
+[![GitHub stars](https://img.shields.io/github/stars/turkaysoft/vcardix?style=flat&color=0062cc&label=Stars)](https://github.com/turkaysoft/vcardix/stargazers)
+[![GitHub release](https://img.shields.io/github/v/release/turkaysoft/vcardix?style=flat&color=5a32a3&label=Latest%20Release)](https://github.com/turkaysoft/vcardix/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat&label=Platform)](https://github.com/turkaysoft/vcardix)
 
 **VCardix** is a high-performance **contact management and editing software** developed by **Eray Türkay**. Designed with a modern algorithm that ranks it among the best in its class, VCardix allows you to manage, edit, and convert your digital contacts across vCard, CSV, and JSON formats with surgical precision. It is the ultimate tool for users who need a fast and reliable way to handle complex contact data.
 
@@ -12,7 +12,7 @@
 ### Donate
 You can support this project by making a donation to help ensure its sustainability and the development of new features.
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-0a6628?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/turkaysoftware)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-0a6628?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/turkaysoft)
 
 ---
 
@@ -45,7 +45,7 @@ VCardix provides a versatile environment for professional contact management:
 
 ## Translation Support
 
-* **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/vcardix/discussions/1).
+* **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoft/vcardix/discussions/1).
 
 ---
 
@@ -62,7 +62,7 @@ VCardix provides a versatile environment for professional contact management:
 
 ## Getting Started
 
-1.  Navigate to the **[Releases](https://github.com/turkaysoftware/vcardix/releases/latest)** page.
+1.  Navigate to the **[Releases](https://github.com/turkaysoft/vcardix/releases/latest)** page.
 2.  Download the latest ZIP file.
 3.  **Extract all files from the ZIP** (Important: Application requires all folder contents to run correctly).
 4.  Launch the executable corresponding to your architecture:
@@ -81,4 +81,4 @@ VCardix provides a versatile environment for professional contact management:
 
 ## License
 
-This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoftware/vcardix?tab=MIT-1-ov-file).
+This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoft/vcardix?tab=MIT-1-ov-file).
